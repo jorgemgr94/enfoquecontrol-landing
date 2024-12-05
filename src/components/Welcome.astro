@@ -1,190 +1,72 @@
 ---
 import logo from "../assets/enfoque-logo.png";
-import controlServices from "../assets/control-services.webp";
 import whatsappIcon from "../assets/whatsapp-icon.png";
 ---
 
-<header>
-	<div class="logo">
-		<img class="logo" src={logo.src} alt="logo" width="200" />
-	</div>
-</header>
+<head>
+	<meta
+		name="description"
+		content="Enfoque Pest Control - Soluciones rápidas y efectivas para el control de plagas. Contáctanos en WhatsApp."
+	/>
+	<meta
+		name="keywords"
+		content="control de plagas, soluciones de plagas, servicios de control de plagas"
+	/>
+	<meta name="author" content="Enfoque Pest Control" />
+</head>
 
-<div class="container">
-	<h1>¡Estamos trabajando para ti!</h1>
-	<p>
-		Este sitio web pronto estará lleno de soluciones para controlar
-		cualquier tipo de plaga. Pronto podrás descubrir servicios efectivos,
-		rápidos y profesionales.
-	</p>
-	<p id="contact-container">
-		<b>¡Contáctanos!</b>		
-		<a target="_blank" href="https://wa.me/5218118791398">
-			<img src={whatsappIcon.src} alt="whatsapp-icon" width="60" />
-		</a>
-	</p>
-	<p>
-		<img
-			src={controlServices.src}
-			alt="pest-control"
-			width="350"
-		/>
-	</p>
+
+
+<div class="relative">
+	<header class="relative flex items-center max-w-4xl mx-auto mt-12">
+		<!-- Logo with absolute positioning -->
+		<div class="logo absolute top-0 left-0 mt-12">
+			<img src={logo.src} alt="logo" class="w-48" loading="lazy" />
+		</div>
+	</header>
+	<div class="container mx-auto flex flex-col items-center justify-center max-w-2xl px-4 py-8 h-screen">
+		<h1 class="text-3xl font-bold sm:text-4xl text-green-500">¡Estamos trabajando para ti!</h1>
+
+		<p class="text-base mt-6 text-gray-100 sm:text-lg">
+			Este sitio web pronto estará lleno de soluciones para controlar cualquier
+			tipo de plaga. Pronto podrás descubrir servicios efectivos, rápidos y
+			profesionales.
+		</p>
+
+		<div
+			id="contact-container"
+			class="flex flex-col items-center justify-center mt-6"
+		>
+			<a
+				target="_blank"
+				href="https://wa.me/5218118791398"
+				class="mt-4 inline-flex items-center justify-center bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600"
+			>
+				<img src={whatsappIcon.src} alt="WhatsApp Icon" class="w-8 mr-2" />
+				<span>Contáctanos en WhatsApp</span>
+			</a>
+		</div>
+	</div>
 </div>
 
 <style>
-	*,
-	*:before,
-	*:after {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-
 	body {
-		font-family: "Open Sans", sans-serif;
-		background: #f5f5f5;
-		color: #333;
-		font-size: 14px;
 		margin: 0;
-		padding: 0;
-		background: #F7F8E8;
+		font-family: sans-serif;
 	}
 
-	#contact-container {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
-	* {
-		margin: 0;
-		padding: 0;
-	}
-
-	header {
-		display: flex;
-		align-items: center;
-		max-width: 1100px;
-		margin: 34px auto;
-	}
-
-	.right > span {
-		font-weight: 600;
-		font-size: 18px;
-		line-height: 22px;
-		text-align: center;
-		color: #151284;
-	}
-
-	.container {
+	.relative::before {
+		content: "";
+		position: fixed;
+		top: 0;
+		left: 0;
 		width: 100%;
-		max-width: 800px;
-		margin: 0 auto;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.container > h1 {
-		font-weight: 600;
-		font-size: 48px;
-		line-height: 120%;
-		text-align: center;
-	}
-
-	.container > p {
-		padding: 20px 0;
-		font-weight: 400;
-		font-size: 16px;
-		line-height: 160.19%;
-		text-align: center;
-		color: #4e4e4e;
-	}
-
-	.join-wrapper {
-		display: flex;
-		justify-content: center;
-		gap: 16px;
-	}
-
-	.join-wrapper > input {
-		width: 100%;
-		max-width: 400px;
-		height: 64px;
-		border: 1px solid #e5e5e5;
-		box-sizing: border-box;
-		border-radius: 4px;
-		padding: 0 20px;
-		font-size: 16px;
-		line-height: 20px;
-		color: #4e4e4e;
-	}
-
-	.join-wrapper > input:hover {
-		border: 1px solid #151284;
-	}
-
-	.join-wrapper > button {
-		height: 64px;
-		width: 132px;
-		background: #151284;
-		border-radius: 4px;
-		font-weight: 600;
-		font-size: 16px;
-		line-height: 20px;
-		text-align: center;
-		color: #ffffff;
-		border: none;
-		cursor: pointer;
-	}
-
-	.join-wrapper > button:hover {
-		background: #0d0d5a;
-	}
-
-	.creators {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.creators > div:first-child {
-		display: flex;
-		justify-content: center;
-		margin: 20px;
-	}
-
-	.creators > div:first-child > img {
-		width: 44px;
-		height: 44px;
-		border: 2px solid #fff;
-		border-radius: 50%;
-		margin-left: -8px;
-	}
-
-	.creators > p {
-		font-weight: 600;
-		font-size: 14px;
-		line-height: 128.9%;
-		text-align: center;
-		color: #4e4e4e;
-	}
-
-	@media screen and (max-width: 1120px) {
-		header {
-			padding: 0 20px;
-		}
-
-		.container {
-			padding: 70px 20px;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		.join-wrapper {
-			flex-direction: column;
-			align-items: center;
-		}
+		height: 100%;
+		background:
+			linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+			url(https://www.cyberoptik.net/wp-content/uploads/2024/03/Depositphotos_254161110_L-e1710006979791.jpg)
+				no-repeat center center;
+		background-size: cover;
+		z-index: -1;
 	}
 </style>
