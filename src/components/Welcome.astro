@@ -1,5 +1,6 @@
 ---
 import logo from "../assets/enfoque-logo.png";
+import ExternalArrowIcon from "./icons/ExternalArrowIcon.astro";
 
 const whatsappNumber = "5218118791398";
 const whatsappBase = `https://wa.me/${whatsappNumber}`;
@@ -111,6 +112,7 @@ const schema = {
 		>
 			<span class="status-dot" aria-hidden="true"></span>
 			Cotizar por WhatsApp
+			<ExternalArrowIcon class="header-cta-icon" />
 		</a>
 	</div>
 </header>
@@ -134,7 +136,7 @@ const schema = {
 					>
 						<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.52 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.58 5.93L.1 23.9l6.28-1.64a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.31 11.88-11.85 0-3.17-1.23-6.14-3.46-8.37Zm-8.42 18.21h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.82 9.82 0 0 1-1.51-5.25c0-5.43 4.44-9.85 9.9-9.85a9.8 9.8 0 0 1 7 2.9 9.77 9.77 0 0 1 2.9 6.97c0 5.43-4.45 9.84-9.91 9.84Zm5.43-7.37c-.3-.15-1.76-.86-2.03-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47a8.9 8.9 0 0 1-1.66-2.06c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.07 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg>
 						Resolver mi caso
-						<span aria-hidden="true">↗</span>
+						<ExternalArrowIcon />
 					</a>
 					<a class="button button-secondary" href="tel:+528118791398">
 						Llamar al 81 1879 1398
@@ -213,7 +215,7 @@ const schema = {
 						aria-label={`Consultar servicio para ${service.title} por WhatsApp`}
 					>
 						<span>Consultar</span>
-						<span aria-hidden="true">↗</span>
+						<ExternalArrowIcon />
 					</a>
 				</article>
 			))}
@@ -321,7 +323,7 @@ const schema = {
 
 				<button class="button form-submit" type="submit">
 					Preparar mensaje
-					<span aria-hidden="true">↗</span>
+					<ExternalArrowIcon />
 				</button>
 				<p class="form-hint">Se abrirá una conversación con Enfoque Pest Control.</p>
 			</form>
@@ -339,7 +341,7 @@ const schema = {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Confirmar mi zona <span aria-hidden="true">↗</span>
+				Confirmar mi zona <ExternalArrowIcon />
 			</a>
 		</div>
 		<div class="coverage-map" aria-label="Municipios atendidos">
@@ -389,7 +391,7 @@ const schema = {
 				rel="noreferrer"
 			>
 				Escribir por WhatsApp
-				<span aria-hidden="true">↗</span>
+				<ExternalArrowIcon />
 			</a>
 		</div>
 	</section>
@@ -404,7 +406,9 @@ const schema = {
 		<div class="footer-contact">
 			<span>Contacto directo</span>
 			<a href="tel:+528118791398">81 1879 1398</a>
-			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito información.")}`} target="_blank" rel="noreferrer">WhatsApp ↗</a>
+			<a class="footer-contact-link" href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito información.")}`} target="_blank" rel="noreferrer">
+				WhatsApp <ExternalArrowIcon />
+			</a>
 		</div>
 		<div class="footer-links">
 			<span>Explorar</span>
@@ -518,6 +522,12 @@ const schema = {
 		font-weight: 700;
 		text-decoration: none;
 		transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.header-cta :global(.header-cta-icon) {
+		display: none;
+		width: 18px;
+		height: 18px;
 	}
 
 	.header-cta:hover {
@@ -1525,6 +1535,12 @@ const schema = {
 		text-decoration: none;
 	}
 
+	.footer-contact .footer-contact-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+	}
+
 	.footer-contact a:hover,
 	.footer-links a:hover {
 		color: var(--signal-400);
@@ -1755,9 +1771,8 @@ const schema = {
 			font-size: 0;
 		}
 
-		.header-cta::after {
-			content: "↗";
-			font-size: 1rem;
+		.header-cta :global(.header-cta-icon) {
+			display: block;
 		}
 
 		.hero-copy .eyebrow {

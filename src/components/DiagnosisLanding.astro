@@ -3,6 +3,7 @@ import logo from "../assets/enfoque-logo.png";
 import homeInspection from "../assets/visual-storytelling/home-inspection.webp";
 import businessInspection from "../assets/visual-storytelling/business-inspection.webp";
 import industrialInspection from "../assets/visual-storytelling/industrial-inspection.webp";
+import ExternalArrowIcon from "./icons/ExternalArrowIcon.astro";
 
 const whatsappNumber = "5218118791398";
 const whatsappBase = `https://wa.me/${whatsappNumber}`;
@@ -105,9 +106,7 @@ const schema = {
 		>
 			<i aria-hidden="true"></i>
 			<strong>Cotizar</strong>
-			<svg class="header-action-icon" viewBox="0 0 24 24" aria-hidden="true">
-				<path d="M7 17 17 7M9 7h8v8"></path>
-			</svg>
+			<ExternalArrowIcon class="header-action-icon" />
 		</a>
 	</div>
 </header>
@@ -172,7 +171,7 @@ const schema = {
 						</div>
 						<button type="submit">
 							Continuar
-							<span aria-hidden="true">↗</span>
+							<ExternalArrowIcon />
 						</button>
 					</div>
 				</form>
@@ -199,7 +198,7 @@ const schema = {
 							<p>{context.text}</p>
 						</div>
 						<a href={`${whatsappBase}?text=${encodeURIComponent(context.message)}`} target="_blank" rel="noreferrer">
-							Contar mi caso <span aria-hidden="true">↗</span>
+							Contar mi caso <ExternalArrowIcon />
 						</a>
 					</div>
 				</article>
@@ -269,7 +268,7 @@ const schema = {
 			</div>
 			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`} target="_blank" rel="noreferrer">
 				Empezar mi conversación
-				<span aria-hidden="true">↗</span>
+				<ExternalArrowIcon />
 			</a>
 		</div>
 	</section>
@@ -285,7 +284,7 @@ const schema = {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Confirmar mi zona <span aria-hidden="true">↗</span>
+				Confirmar mi zona <ExternalArrowIcon />
 			</a>
 		</div>
 		<div class="coverage-map" aria-label="Municipios atendidos">
@@ -327,7 +326,9 @@ const schema = {
 		<div class="footer-action">
 			<span>Contacto directo</span>
 			<a href="tel:+528118791398">81 1879 1398</a>
-			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito información.")}`} target="_blank" rel="noreferrer">Contacto ↗</a>
+			<a class="footer-contact-link" href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito información.")}`} target="_blank" rel="noreferrer">
+				Contacto <ExternalArrowIcon />
+			</a>
 		</div>
 	</div>
 	<div class="footer-bottom"><span>© {new Date().getFullYear()} Enfoque Pest Control</span><span>Monterrey, Nuevo León</span></div>
@@ -523,15 +524,10 @@ const schema = {
 		font-size: .74rem;
 	}
 
-	.header-action-icon {
+	.header-action :global(.header-action-icon) {
 		display: none;
 		width: 19px;
 		height: 19px;
-		fill: none;
-		stroke: currentColor;
-		stroke-width: 1.8;
-		stroke-linecap: round;
-		stroke-linejoin: round;
 	}
 
 	.hero {
@@ -1569,6 +1565,12 @@ const schema = {
 		text-decoration: none;
 	}
 
+	.footer-action .footer-contact-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+	}
+
 	.footer-bottom {
 		min-height: 58px;
 		display: flex;
@@ -1794,7 +1796,7 @@ const schema = {
 			display: none;
 		}
 
-		.header-action-icon {
+		.header-action :global(.header-action-icon) {
 			display: block;
 		}
 
