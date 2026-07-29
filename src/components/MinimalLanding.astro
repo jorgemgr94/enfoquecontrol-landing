@@ -1,0 +1,1380 @@
+---
+import logo from "../assets/enfoque-logo.png";
+
+const whatsappNumber = "5218118791398";
+const whatsappBase = `https://wa.me/${whatsappNumber}`;
+
+const services = [
+	{
+		title: "Para tu hogar",
+		description: "Atención para casas y departamentos con recomendaciones adaptadas al espacio y al tipo de plaga.",
+		items: ["Cucarachas", "Hormigas", "Arañas", "Chinches"],
+		message: "Hola, necesito información sobre control de plagas para mi hogar.",
+	},
+	{
+		title: "Para tu negocio",
+		description: "Soluciones preventivas y correctivas para espacios que necesitan operar con tranquilidad.",
+		items: ["Comercios", "Oficinas", "Restaurantes", "Locales"],
+		message: "Hola, necesito información sobre control de plagas para mi negocio.",
+	},
+	{
+		title: "Para tu industria",
+		description: "Atención para bodegas, plantas y áreas operativas donde el seguimiento es indispensable.",
+		items: ["Bodegas", "Plantas", "Almacenes", "Monitoreo"],
+		message: "Hola, necesito información sobre control de plagas para una instalación industrial.",
+	},
+];
+
+const pests = ["Cucarachas", "Roedores", "Termitas", "Mosquitos", "Chinches", "Hormigas"];
+const coverage = ["Monterrey", "San Nicolás", "Guadalupe", "Apodaca", "Escobedo", "Santa Catarina", "San Pedro", "Área metropolitana"];
+const faqs = [
+	{
+		question: "¿Qué información necesitan para orientarme?",
+		answer: "Cuéntanos qué plaga observaste, en qué municipio estás y si se trata de una casa, negocio o instalación industrial. Las fotografías del área también ayudan a entender mejor el caso.",
+	},
+	{
+		question: "¿Todos los problemas se tratan de la misma manera?",
+		answer: "No. El método y la preparación dependen de la especie, el nivel de actividad y las condiciones del inmueble. La recomendación se define después de entender el caso.",
+	},
+	{
+		question: "¿Tengo que salir del inmueble?",
+		answer: "Depende del tratamiento indicado. Antes de la visita recibirás las instrucciones de preparación y el tiempo de reingreso aplicable.",
+	},
+	{
+		question: "¿Atienden hogares y empresas?",
+		answer: "Sí. La atención se adapta a espacios residenciales, comerciales e industriales. Confirma la disponibilidad para tu zona por WhatsApp.",
+	},
+];
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "PestControl",
+	name: "Enfoque Pest Control",
+	url: "https://www.enfoquecontrol.com",
+	telephone: "+52 81 1879 1398",
+	image: "https://www.enfoquecontrol.com/bg-image.webp",
+	areaServed: coverage,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<header class="minimal-header">
+	<div class="header-shell">
+		<a class="logo-link" href="#inicio" aria-label="Enfoque Pest Control, inicio">
+			<img src={logo.src} alt="Enfoque Pest Control" width="462" height="221" />
+		</a>
+		<nav aria-label="Navegación principal">
+			<a href="#servicios">Servicios</a>
+			<a href="#metodo">Cómo funciona</a>
+			<a href="#cobertura">Cobertura</a>
+			<a href="#preguntas">Preguntas</a>
+		</nav>
+		<a class="quiet-cta" href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`} target="_blank" rel="noreferrer">
+			Hablar por WhatsApp
+			<span aria-hidden="true">↗</span>
+		</a>
+	</div>
+</header>
+
+<main id="contenido">
+	<section class="hero" id="inicio">
+		<div class="hero-shell">
+			<div class="hero-copy">
+				<p class="overline"><i></i> Control de plagas en Monterrey</p>
+				<h1>Tu espacio,<br /><em>bajo control.</em></h1>
+				<p class="hero-text">Atención profesional para hogares, negocios e industria. Empezamos por escuchar qué está pasando y recomendar el siguiente paso.</p>
+				<div class="hero-actions">
+					<a class="primary-button" href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`} target="_blank" rel="noreferrer">
+						Quiero resolver mi caso
+						<span aria-hidden="true">↗</span>
+					</a>
+					<a class="phone-link" href="tel:+528118791398">81 1879 1398</a>
+				</div>
+				<p class="microcopy">Si puedes, comparte fotos del área por WhatsApp.</p>
+			</div>
+
+			<div class="hero-image">
+				<img src="/bg-image.webp" alt="Técnico inspeccionando una vivienda para control de plagas" width="1920" height="1282" fetchpriority="high" />
+				<div class="image-caption">
+					<span class="caption-mark" aria-hidden="true"></span>
+					<p><strong>Atención para cada contexto</strong><small>Residencial · Comercial · Industrial</small></p>
+				</div>
+			</div>
+		</div>
+		<div class="hero-trust">
+			<p>Una respuesta clara comienza con un buen diagnóstico.</p>
+			<ul aria-label="Principios del servicio">
+				<li>Escuchar</li>
+				<li>Identificar</li>
+				<li>Tratar</li>
+				<li>Prevenir</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section introduction">
+		<div class="intro-label">
+			<span>Enfoque</span>
+		</div>
+		<div class="intro-copy">
+			<h2>No se trata solo de fumigar. Se trata de entender el problema.</h2>
+			<p>La plaga, el inmueble y la forma en que se utiliza el espacio cambian la recomendación. Por eso empezamos con contexto, no con una solución genérica.</p>
+		</div>
+	</section>
+
+	<section class="section services" id="servicios">
+		<div class="section-title">
+			<p class="overline"><i></i> Servicios</p>
+			<h2>Protección para el lugar que te importa.</h2>
+		</div>
+		<div class="service-grid">
+			{services.map((service) => (
+				<article class="service-card">
+					<div>
+						<h3>{service.title}</h3>
+						<p>{service.description}</p>
+					</div>
+					<ul>
+						{service.items.map((item) => <li>{item}</li>)}
+					</ul>
+					<a href={`${whatsappBase}?text=${encodeURIComponent(service.message)}`} target="_blank" rel="noreferrer">
+						Consultar este servicio <span aria-hidden="true">↗</span>
+					</a>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="question-block">
+		<div class="question-shell">
+			<div class="question-copy">
+				<p class="overline overline-light"><i></i> Orientación rápida</p>
+				<h2>¿Qué estás viendo?</h2>
+				<p>No necesitas saber el nombre técnico ni el tratamiento. Elige la señal más cercana a tu caso y abre una conversación.</p>
+			</div>
+			<div class="pest-links">
+				{pests.map((pest) => (
+					<a href={`${whatsappBase}?text=${encodeURIComponent(`Hola, necesito ayuda con ${pest.toLowerCase()} en mi espacio.`)}`} target="_blank" rel="noreferrer">
+						<span>{pest}</span>
+						<i aria-hidden="true">↗</i>
+					</a>
+				))}
+				<a class="unsure" href={`${whatsappBase}?text=${encodeURIComponent("Hola, tengo un problema de plagas pero no estoy seguro de cuál es.")}`} target="_blank" rel="noreferrer">
+					<span>No estoy seguro</span>
+					<i aria-hidden="true">↗</i>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section method" id="metodo">
+		<div class="section-title">
+			<p class="overline"><i></i> Cómo funciona</p>
+			<h2>Un proceso sencillo, sin vueltas.</h2>
+		</div>
+		<div class="method-list">
+			<article>
+				<span class="method-icon"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M5 7h22v15H13l-6 5v-5H5V7Z"/></svg></span>
+				<h3>Cuéntanos</h3>
+				<p>Comparte la plaga, el tipo de espacio y tu municipio.</p>
+			</article>
+			<article>
+				<span class="method-icon"><svg aria-hidden="true" viewBox="0 0 32 32"><circle cx="14" cy="14" r="8"/><path d="m20 20 7 7"/></svg></span>
+				<h3>Revisamos</h3>
+				<p>Entendemos las señales y las condiciones particulares del caso.</p>
+			</article>
+			<article>
+				<span class="method-icon"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 3 27 8v8c0 7-4.7 11.5-11 13C9.7 27.5 5 23 5 16V8l11-5Z"/><path d="m11 16 3 3 7-7"/></svg></span>
+				<h3>Actuamos</h3>
+				<p>Definimos el tratamiento y las indicaciones aplicables.</p>
+			</article>
+			<article>
+				<span class="method-icon"><svg aria-hidden="true" viewBox="0 0 32 32"><path d="M6 22c5-1 8-4 10-9 2 5 5 8 10 9"/><path d="M16 6v21"/></svg></span>
+				<h3>Prevenimos</h3>
+				<p>Compartimos recomendaciones para reducir la reaparición.</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="diagnostic">
+		<div class="diagnostic-shell">
+			<div class="diagnostic-copy">
+				<p class="overline"><i></i> Empecemos</p>
+				<h2>Cuéntanos lo esencial.</h2>
+				<p>Estas respuestas preparan tu mensaje. No almacenamos información en el sitio.</p>
+			</div>
+			<form id="minimal-whatsapp-form">
+				<div class="field">
+					<label for="minimal-space">¿Dónde está el problema?</label>
+					<select id="minimal-space" name="space" required>
+						<option value="">Selecciona el espacio</option>
+						<option>Casa o departamento</option>
+						<option>Negocio o comercio</option>
+						<option>Oficina</option>
+						<option>Restaurante</option>
+						<option>Bodega o industria</option>
+						<option>Otro espacio</option>
+					</select>
+				</div>
+				<div class="field">
+					<label for="minimal-pest">¿Qué plaga observaste?</label>
+					<select id="minimal-pest" name="pest" required>
+						<option value="">Selecciona una opción</option>
+						{pests.map((pest) => <option>{pest}</option>)}
+						<option>No estoy seguro</option>
+					</select>
+				</div>
+				<div class="field">
+					<label for="minimal-city">¿En qué municipio estás?</label>
+					<input id="minimal-city" name="city" type="text" placeholder="Ej. Monterrey" autocomplete="address-level2" required />
+				</div>
+				<button type="submit">
+					Preparar mensaje de WhatsApp
+					<span aria-hidden="true">↗</span>
+				</button>
+			</form>
+		</div>
+	</section>
+
+	<section class="section coverage" id="cobertura">
+		<div class="coverage-copy">
+			<p class="overline"><i></i> Cobertura</p>
+			<h2>Atención en Monterrey y su área metropolitana.</h2>
+			<p>Confirma disponibilidad para tu municipio y tipo de inmueble al solicitar información.</p>
+			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, quiero confirmar si tienen cobertura en mi municipio.")}`} target="_blank" rel="noreferrer">
+				Confirmar mi zona <span aria-hidden="true">↗</span>
+			</a>
+		</div>
+		<ul class="city-list">
+			{coverage.map((city) => <li>{city}</li>)}
+		</ul>
+	</section>
+
+	<section class="section faq" id="preguntas">
+		<div class="faq-title">
+			<p class="overline"><i></i> Preguntas frecuentes</p>
+			<h2>Antes de agendar.</h2>
+		</div>
+		<div class="faq-list">
+			{faqs.map((faq) => (
+				<details>
+					<summary><span>{faq.question}</span><i aria-hidden="true"></i></summary>
+					<p>{faq.answer}</p>
+				</details>
+			))}
+		</div>
+	</section>
+
+	<section class="final">
+		<div class="final-shell">
+			<img src={logo.src} alt="" width="462" height="221" loading="lazy" aria-hidden="true" />
+			<h2>¿Hay algo que no te deja estar tranquilo?</h2>
+			<p>Descríbelo por WhatsApp. Te ayudamos a enfocar el problema y definir el siguiente paso.</p>
+			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, quiero orientación para resolver un problema de plagas.")}`} target="_blank" rel="noreferrer">
+				Escribir por WhatsApp
+				<span aria-hidden="true">↗</span>
+			</a>
+		</div>
+	</section>
+</main>
+
+<footer>
+	<div class="footer-shell">
+		<div>
+			<img src={logo.src} alt="Enfoque Pest Control" width="462" height="221" loading="lazy" />
+			<p>Control profesional de plagas en Monterrey y su área metropolitana.</p>
+		</div>
+		<div class="footer-contact">
+			<a href="tel:+528118791398">81 1879 1398</a>
+			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito información.")}`} target="_blank" rel="noreferrer">WhatsApp ↗</a>
+		</div>
+	</div>
+	<div class="footer-bottom"><span>© {new Date().getFullYear()} Enfoque Pest Control</span><span>Monterrey, Nuevo León</span></div>
+</footer>
+
+<a class="floating" href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`} target="_blank" rel="noreferrer" aria-label="Contactar por WhatsApp">
+	<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.52 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.58 5.93L.1 23.9l6.28-1.64a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.31 11.88-11.85 0-3.17-1.23-6.14-3.46-8.37Zm-8.42 18.21h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.82 9.82 0 0 1-1.51-5.25c0-5.43 4.44-9.85 9.9-9.85a9.8 9.8 0 0 1 7 2.9 9.77 9.77 0 0 1 2.9 6.97c0 5.43-4.45 9.84-9.91 9.84Z"/></svg>
+	<span>WhatsApp</span>
+</a>
+
+<script>
+	const form = document.querySelector<HTMLFormElement>("#minimal-whatsapp-form");
+	form?.addEventListener("submit", (event) => {
+		event.preventDefault();
+		const data = new FormData(form);
+		const message = `Hola, necesito orientación para control de plagas.\n\nEspacio: ${data.get("space")}\nPlaga: ${data.get("pest")}\nMunicipio: ${data.get("city")}`;
+		window.open(`https://wa.me/5218118791398?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+	});
+</script>
+
+<style>
+	:global(body) {
+		background: #f7f6f1;
+		color: #18201c;
+	}
+
+	.minimal-header {
+		position: absolute;
+		z-index: 20;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	.header-shell,
+	.hero-shell,
+	.hero-trust,
+	.section,
+	.question-shell,
+	.diagnostic-shell,
+	.final-shell,
+	.footer-shell,
+	.footer-bottom {
+		width: min(1160px, calc(100% - 48px));
+		margin: 0 auto;
+	}
+
+	.header-shell {
+		min-height: 104px;
+		display: grid;
+		grid-template-columns: 190px 1fr auto;
+		align-items: center;
+		gap: 40px;
+		border-bottom: 1px solid rgba(24, 32, 28, 0.1);
+	}
+
+	.logo-link {
+		display: inline-flex;
+		width: 176px;
+	}
+
+	.logo-link img,
+	.footer-shell img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	nav {
+		display: flex;
+		justify-content: center;
+		gap: 28px;
+	}
+
+	nav a,
+	.quiet-cta,
+	.phone-link {
+		font-size: 0.78rem;
+		font-weight: 650;
+		text-decoration: none;
+	}
+
+	nav a {
+		color: #66716b;
+		transition: color 160ms cubic-bezier(.23, 1, .32, 1);
+	}
+
+	nav a:hover {
+		color: #245f3a;
+	}
+
+	.quiet-cta {
+		min-height: 44px;
+		padding: 0 16px;
+		display: inline-flex;
+		align-items: center;
+		gap: 14px;
+		border: 1px solid rgba(24, 32, 28, 0.18);
+		border-radius: 5px;
+		color: #18201c;
+		transition: border-color 160ms cubic-bezier(.23, 1, .32, 1), background 160ms cubic-bezier(.23, 1, .32, 1), transform 120ms;
+	}
+
+	.quiet-cta:hover {
+		border-color: #2f7a49;
+		background: rgba(47, 122, 73, 0.05);
+	}
+
+	.hero {
+		padding-top: 104px;
+		overflow: hidden;
+		background: #f7f6f1;
+	}
+
+	.hero-shell {
+		min-height: 720px;
+		padding: 92px 0 72px;
+		display: grid;
+		grid-template-columns: 0.9fr 1.1fr;
+		align-items: center;
+		gap: clamp(56px, 9vw, 128px);
+	}
+
+	.overline {
+		margin: 0;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		color: #3f704d;
+		font-size: 0.67rem;
+		font-weight: 800;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.overline i {
+		width: 30px;
+		height: 3px;
+		border-radius: 3px;
+		background: linear-gradient(90deg, #8bae42, #2d7346);
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		text-wrap: pretty;
+	}
+
+	h1,
+	h2 {
+		text-wrap: balance;
+	}
+
+	h1 {
+		margin: 28px 0 24px;
+		font-size: clamp(4.5rem, 7.5vw, 7.4rem);
+		font-weight: 540;
+		letter-spacing: -0.075em;
+		line-height: 0.88;
+	}
+
+	h1 em {
+		color: #347548;
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 400;
+	}
+
+	.hero-text {
+		max-width: 540px;
+		margin: 0;
+		color: #637069;
+		font-size: 1rem;
+		line-height: 1.7;
+	}
+
+	.hero-actions {
+		margin-top: 36px;
+		display: flex;
+		align-items: center;
+		gap: 24px;
+	}
+
+	.primary-button,
+	.diagnostic button,
+	.final a {
+		min-height: 54px;
+		padding: 0 22px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 24px;
+		border: 0;
+		border-radius: 5px;
+		background: #285f3b;
+		color: #fff;
+		font-size: 0.82rem;
+		font-weight: 750;
+		text-decoration: none;
+		cursor: pointer;
+		transition: background 160ms cubic-bezier(.23, 1, .32, 1), transform 120ms;
+	}
+
+	.primary-button:hover,
+	.diagnostic button:hover {
+		background: #183d27;
+	}
+
+	.primary-button:active,
+	.diagnostic button:active,
+	.final a:active,
+	.quiet-cta:active,
+	.service-card a:active,
+	.pest-links a:active,
+	.floating:active {
+		transform: scale(.97);
+	}
+
+	.phone-link {
+		min-height: 44px;
+		display: inline-flex;
+		align-items: center;
+		border-bottom: 1px solid rgba(24, 32, 28, 0.24);
+		color: #18201c;
+	}
+
+	.microcopy {
+		margin: 14px 0 0;
+		color: #89918d;
+		font-size: 0.7rem;
+	}
+
+	.hero-image {
+		position: relative;
+		padding: 18px;
+		border-radius: 2px;
+		background: #eeece3;
+	}
+
+	.hero-image::before {
+		content: "";
+		position: absolute;
+		top: -28px;
+		right: -28px;
+		width: 130px;
+		height: 130px;
+		border-top: 1px solid rgba(47, 122, 73, 0.25);
+		border-right: 1px solid rgba(47, 122, 73, 0.25);
+	}
+
+	.hero-image > img {
+		display: block;
+		width: 100%;
+		aspect-ratio: .94;
+		object-fit: cover;
+		object-position: 56% center;
+		filter: saturate(.76) contrast(1.02);
+	}
+
+	.image-caption {
+		position: absolute;
+		right: -24px;
+		bottom: 50px;
+		min-width: 280px;
+		padding: 18px 20px;
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		border-radius: 6px;
+		background: #fff;
+		box-shadow: 0 18px 50px rgba(34, 48, 40, .12);
+	}
+
+	.caption-mark {
+		flex: 0 0 8px;
+		width: 8px;
+		height: 38px;
+		border-radius: 8px;
+		background: linear-gradient(180deg, #8bae42, #2d7346);
+	}
+
+	.image-caption p,
+	.image-caption strong,
+	.image-caption small {
+		display: block;
+		margin: 0;
+	}
+
+	.image-caption strong {
+		font-size: .78rem;
+	}
+
+	.image-caption small {
+		margin-top: 3px;
+		color: #78817c;
+		font-size: .67rem;
+	}
+
+	.hero-trust {
+		min-height: 92px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 40px;
+		border-top: 1px solid rgba(24, 32, 28, .11);
+	}
+
+	.hero-trust p {
+		margin: 0;
+		font-size: .87rem;
+		font-weight: 650;
+	}
+
+	.hero-trust ul {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 30px;
+		color: #7a847e;
+		font-size: .68rem;
+		font-weight: 700;
+		list-style: none;
+	}
+
+	.hero-trust li {
+		position: relative;
+	}
+
+	.hero-trust li + li::before {
+		content: "·";
+		position: absolute;
+		left: -17px;
+		color: #8bae42;
+	}
+
+	.section {
+		padding: clamp(96px, 12vw, 152px) 0;
+	}
+
+	.introduction {
+		display: grid;
+		grid-template-columns: .3fr 1fr;
+		gap: 60px;
+	}
+
+	.intro-label span {
+		padding-bottom: 6px;
+		border-bottom: 2px solid #4c8b5c;
+		color: #347548;
+		font-size: .7rem;
+		font-weight: 800;
+		text-transform: uppercase;
+	}
+
+	.intro-copy {
+		display: grid;
+		grid-template-columns: 1fr .52fr;
+		align-items: end;
+		gap: 70px;
+	}
+
+	.intro-copy h2,
+	.section-title h2,
+	.question-copy h2,
+	.diagnostic-copy h2,
+	.coverage-copy h2,
+	.faq-title h2,
+	.final h2 {
+		margin: 0;
+		font-size: clamp(2.75rem, 4.7vw, 4.8rem);
+		font-weight: 540;
+		letter-spacing: -.06em;
+		line-height: .98;
+	}
+
+	.intro-copy p,
+	.question-copy > p:last-child,
+	.diagnostic-copy > p:last-child,
+	.coverage-copy > p {
+		margin: 0;
+		color: #6f7973;
+		font-size: .86rem;
+		line-height: 1.75;
+	}
+
+	.services {
+		border-top: 1px solid rgba(24, 32, 28, .1);
+	}
+
+	.section-title {
+		max-width: 700px;
+	}
+
+	.section-title h2,
+	.faq-title h2 {
+		margin-top: 24px;
+	}
+
+	.service-grid {
+		margin-top: 64px;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+	}
+
+	.service-card {
+		min-height: 450px;
+		padding: 36px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border-radius: 8px;
+		background: #efede5;
+		transition: background 180ms cubic-bezier(.23, 1, .32, 1), transform 180ms cubic-bezier(.23, 1, .32, 1);
+	}
+
+	.service-card:hover {
+		background: #e9e8de;
+		transform: translateY(-3px);
+	}
+
+	.service-card h3 {
+		margin: 0 0 16px;
+		font-size: 1.6rem;
+		font-weight: 570;
+		letter-spacing: -.04em;
+	}
+
+	.service-card p {
+		margin: 0;
+		color: #707a74;
+		font-size: .82rem;
+		line-height: 1.7;
+	}
+
+	.service-card ul {
+		margin: auto 0 32px;
+		padding: 28px 0 0;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+		border-top: 1px solid rgba(24, 32, 28, .1);
+		list-style: none;
+	}
+
+	.service-card li {
+		color: #59655e;
+		font-size: .7rem;
+	}
+
+	.service-card a,
+	.coverage-copy a {
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		color: #2f7044;
+		font-size: .75rem;
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	.question-block {
+		padding: clamp(96px, 11vw, 144px) 0;
+		background: #173326;
+		color: #fff;
+	}
+
+	.question-shell {
+		display: grid;
+		grid-template-columns: .75fr 1.25fr;
+		gap: clamp(64px, 10vw, 140px);
+	}
+
+	.overline-light {
+		color: #b9d78c;
+	}
+
+	.question-copy h2 {
+		margin: 26px 0 22px;
+	}
+
+	.question-copy > p:last-child {
+		color: rgba(255, 255, 255, .58);
+	}
+
+	.pest-links {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		border-top: 1px solid rgba(255, 255, 255, .14);
+	}
+
+	.pest-links a {
+		min-height: 84px;
+		padding: 0 22px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-right: 1px solid rgba(255, 255, 255, .14);
+		border-bottom: 1px solid rgba(255, 255, 255, .14);
+		color: rgba(255, 255, 255, .84);
+		font-size: .9rem;
+		font-weight: 650;
+		text-decoration: none;
+		transition: background 160ms cubic-bezier(.23, 1, .32, 1), color 160ms cubic-bezier(.23, 1, .32, 1), transform 120ms;
+	}
+
+	.pest-links a:nth-child(even) {
+		border-right: 0;
+	}
+
+	.pest-links a:hover {
+		background: rgba(255, 255, 255, .06);
+		color: #cde596;
+	}
+
+	.pest-links i {
+		font-style: normal;
+		color: #a7c97b;
+	}
+
+	.pest-links .unsure {
+		grid-column: 1 / -1;
+		border-right: 0;
+	}
+
+	.method {
+		border-bottom: 1px solid rgba(24, 32, 28, .1);
+	}
+
+	.method-list {
+		margin-top: 72px;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 36px;
+	}
+
+	.method-icon {
+		width: 48px;
+		height: 48px;
+		display: grid;
+		place-items: center;
+		border-radius: 50%;
+		background: #e9eee6;
+	}
+
+	.method-icon svg {
+		width: 22px;
+		height: 22px;
+		fill: none;
+		stroke: #347548;
+		stroke-width: 1.4;
+	}
+
+	.method-list h3 {
+		margin: 22px 0 10px;
+		font-size: 1.16rem;
+		font-weight: 650;
+	}
+
+	.method-list p {
+		margin: 0;
+		color: #758079;
+		font-size: .78rem;
+		line-height: 1.7;
+	}
+
+	.diagnostic {
+		padding: clamp(88px, 11vw, 136px) 0;
+		background: #ecebe4;
+	}
+
+	.diagnostic-shell {
+		display: grid;
+		grid-template-columns: .72fr 1.28fr;
+		align-items: center;
+		gap: clamp(64px, 10vw, 140px);
+	}
+
+	.diagnostic-copy h2,
+	.coverage-copy h2 {
+		margin: 24px 0 20px;
+	}
+
+	.diagnostic form {
+		padding: 40px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 24px;
+		border-radius: 10px;
+		background: #fff;
+		box-shadow: 0 20px 60px rgba(25, 43, 33, .08);
+	}
+
+	.field:last-of-type {
+		grid-column: 1 / -1;
+	}
+
+	.field label {
+		display: block;
+		margin-bottom: 9px;
+		font-size: .72rem;
+		font-weight: 750;
+	}
+
+	.field input,
+	.field select {
+		width: 100%;
+		height: 52px;
+		padding: 0 14px;
+		border: 1px solid rgba(24, 32, 28, .13);
+		border-radius: 5px;
+		outline: 0;
+		background: #f3f2ed;
+		color: #18201c;
+		font-size: .8rem;
+	}
+
+	.field input:focus,
+	.field select:focus {
+		border-color: #4c8b5c;
+		box-shadow: 0 0 0 3px rgba(76, 139, 92, .12);
+	}
+
+	.diagnostic button {
+		grid-column: 1 / -1;
+		justify-content: space-between;
+	}
+
+	.coverage {
+		display: grid;
+		grid-template-columns: .8fr 1.2fr;
+		align-items: center;
+		gap: clamp(70px, 12vw, 160px);
+	}
+
+	.coverage-copy a {
+		width: max-content;
+		margin-top: 22px;
+		gap: 16px;
+	}
+
+	.city-list {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		list-style: none;
+	}
+
+	.city-list li {
+		min-height: 64px;
+		padding: 0 16px;
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid rgba(24, 32, 28, .11);
+		color: #4f5b54;
+		font-size: .84rem;
+	}
+
+	.city-list li::before {
+		content: "";
+		width: 6px;
+		height: 6px;
+		margin-right: 12px;
+		border-radius: 50%;
+		background: #6c9c53;
+	}
+
+	.faq {
+		display: grid;
+		grid-template-columns: .65fr 1.35fr;
+		gap: clamp(70px, 11vw, 150px);
+		border-top: 1px solid rgba(24, 32, 28, .1);
+	}
+
+	.faq-list {
+		border-top: 1px solid rgba(24, 32, 28, .12);
+	}
+
+	.faq-list details {
+		border-bottom: 1px solid rgba(24, 32, 28, .12);
+	}
+
+	.faq-list summary {
+		min-height: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		font-size: .9rem;
+		font-weight: 700;
+		list-style: none;
+		cursor: pointer;
+	}
+
+	.faq-list summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq-list summary i {
+		position: relative;
+		width: 28px;
+		height: 28px;
+		flex: 0 0 28px;
+		border: 1px solid rgba(24, 32, 28, .14);
+		border-radius: 50%;
+	}
+
+	.faq-list summary i::before,
+	.faq-list summary i::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 9px;
+		height: 1px;
+		background: #45634f;
+		transform: translate(-50%, -50%);
+	}
+
+	.faq-list summary i::after {
+		transform: translate(-50%, -50%) rotate(90deg);
+		transition: transform 160ms;
+	}
+
+	.faq-list details[open] summary i::after {
+		transform: translate(-50%, -50%);
+	}
+
+	.faq-list details p {
+		margin: -3px 52px 26px 0;
+		color: #707b74;
+		font-size: .8rem;
+		line-height: 1.75;
+	}
+
+	.final {
+		background: #e3ebdf;
+	}
+
+	.final-shell {
+		padding: clamp(96px, 13vw, 160px) 0;
+		text-align: center;
+	}
+
+	.final img {
+		width: 160px;
+		height: auto;
+		margin-bottom: 38px;
+	}
+
+	.final h2 {
+		max-width: 790px;
+		margin: 0 auto;
+	}
+
+	.final p {
+		max-width: 570px;
+		margin: 24px auto 0;
+		color: #657168;
+	}
+
+	.final a {
+		margin-top: 36px;
+	}
+
+	footer {
+		background: #f7f6f1;
+	}
+
+	.footer-shell {
+		padding: 64px 0 48px;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 48px;
+	}
+
+	.footer-shell img {
+		width: 165px;
+	}
+
+	.footer-shell p {
+		max-width: 340px;
+		margin: 18px 0 0;
+		color: #778079;
+		font-size: .75rem;
+	}
+
+	.footer-contact {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 8px;
+	}
+
+	.footer-contact a {
+		color: #345f40;
+		font-size: .76rem;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.footer-bottom {
+		min-height: 58px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-top: 1px solid rgba(24, 32, 28, .1);
+		color: #88908b;
+		font-size: .61rem;
+	}
+
+	.floating {
+		position: fixed;
+		z-index: 50;
+		right: 20px;
+		bottom: 20px;
+		min-height: 48px;
+		padding: 0 16px;
+		display: none;
+		align-items: center;
+		gap: 8px;
+		border-radius: 999px;
+		background: #285f3b;
+		box-shadow: 0 12px 30px rgba(25, 43, 33, .25);
+		color: #fff;
+		font-size: .72rem;
+		font-weight: 800;
+		text-decoration: none;
+		transition: transform 120ms, background 160ms;
+	}
+
+	.floating svg {
+		width: 18px;
+		height: 18px;
+		fill: currentColor;
+	}
+
+	@media (max-width: 980px) {
+		.header-shell {
+			grid-template-columns: 180px 1fr;
+		}
+
+		nav {
+			display: none;
+		}
+
+		.quiet-cta {
+			justify-self: end;
+		}
+
+		.hero-shell {
+			grid-template-columns: 1fr .85fr;
+			gap: 56px;
+		}
+
+		.image-caption {
+			right: -12px;
+			min-width: 240px;
+		}
+
+		.intro-copy,
+		.question-shell,
+		.diagnostic-shell,
+		.coverage,
+		.faq {
+			grid-template-columns: 1fr;
+		}
+
+		.service-grid {
+			gap: 10px;
+		}
+
+		.service-card {
+			padding: 28px;
+		}
+
+		.faq {
+			gap: 56px;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.header-shell {
+			min-height: 88px;
+		}
+
+		.logo-link {
+			width: 148px;
+		}
+
+		.hero {
+			padding-top: 88px;
+		}
+
+		.hero-shell {
+			padding-top: 72px;
+			grid-template-columns: 1fr;
+		}
+
+		h1 {
+			font-size: clamp(4rem, 15vw, 6rem);
+		}
+
+		.hero-image {
+			width: calc(100% - 24px);
+			margin-left: auto;
+		}
+
+		.hero-image > img {
+			aspect-ratio: 1.15;
+		}
+
+		.hero-trust {
+			padding: 24px 0;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 18px;
+		}
+
+		.introduction {
+			grid-template-columns: 1fr;
+			gap: 34px;
+		}
+
+		.service-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.service-card {
+			min-height: 360px;
+		}
+
+		.method-list {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 48px 30px;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.header-shell,
+		.hero-shell,
+		.hero-trust,
+		.section,
+		.question-shell,
+		.diagnostic-shell,
+		.final-shell,
+		.footer-shell,
+		.footer-bottom {
+			width: min(100% - 28px, 1160px);
+		}
+
+		.quiet-cta {
+			width: 44px;
+			padding: 0;
+			justify-content: center;
+			font-size: 0;
+		}
+
+		.quiet-cta span {
+			font-size: 1rem;
+		}
+
+		.hero-shell {
+			min-height: auto;
+			padding-bottom: 56px;
+		}
+
+		.hero-actions {
+			display: grid;
+			gap: 12px;
+		}
+
+		.primary-button {
+			width: 100%;
+		}
+
+		.phone-link {
+			justify-content: center;
+			border: 1px solid rgba(24, 32, 28, .16);
+			border-radius: 5px;
+		}
+
+		.hero-image {
+			padding: 10px;
+		}
+
+		.hero-image > img {
+			aspect-ratio: .95;
+		}
+
+		.image-caption {
+			right: -6px;
+			bottom: 22px;
+			min-width: 238px;
+			padding: 14px;
+		}
+
+		.hero-trust ul {
+			width: 100%;
+			justify-content: space-between;
+			gap: 6px;
+		}
+
+		.hero-trust li + li::before {
+			display: none;
+		}
+
+		.section {
+			padding-top: 88px;
+			padding-bottom: 88px;
+		}
+
+		.intro-copy h2,
+		.section-title h2,
+		.question-copy h2,
+		.diagnostic-copy h2,
+		.coverage-copy h2,
+		.faq-title h2,
+		.final h2 {
+			font-size: clamp(2.65rem, 12vw, 4rem);
+		}
+
+		.pest-links {
+			grid-template-columns: 1fr;
+		}
+
+		.pest-links a,
+		.pest-links a:nth-child(even) {
+			border-right: 0;
+		}
+
+		.pest-links .unsure {
+			grid-column: auto;
+		}
+
+		.method-list {
+			grid-template-columns: 1fr;
+		}
+
+		.method-list article {
+			display: grid;
+			grid-template-columns: 48px 1fr;
+			gap: 0 18px;
+		}
+
+		.method-list h3 {
+			margin-top: 2px;
+		}
+
+		.method-list p {
+			grid-column: 2;
+		}
+
+		.diagnostic form {
+			padding: 22px;
+			grid-template-columns: 1fr;
+		}
+
+		.field:last-of-type,
+		.diagnostic button {
+			grid-column: auto;
+		}
+
+		.city-list {
+			grid-template-columns: 1fr;
+		}
+
+		.footer-shell {
+			flex-direction: column;
+		}
+
+		.footer-contact {
+			align-items: flex-start;
+		}
+
+		.footer-bottom {
+			padding: 18px 0;
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 5px;
+		}
+
+		.floating {
+			display: flex;
+		}
+	}
+</style>
