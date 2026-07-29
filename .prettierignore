@@ -1,0 +1,10 @@
+dist/
+.astro/
+.agents/
+node_modules/
+coverage/
+package-lock.json
+public/favicon.ico
+public/*.webp
+src/assets/**/*.webp
+src/assets/**/*.png

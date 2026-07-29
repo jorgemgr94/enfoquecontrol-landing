@@ -1,0 +1,45 @@
+name: Feature request
+description: Propose an improvement to the website or its delivery workflow.
+title: 'feat: '
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What visitor or business need is not being met?
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the result, not only a specific implementation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed scope
+      description: What should change, and what should remain unchanged?
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: considerations
+    attributes:
+      label: Additional considerations
+      description: Note accessibility, performance, responsive, SEO, privacy, or content implications.

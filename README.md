@@ -1,80 +1,60 @@
-# Enfoque Control Landing Page
+# Enfoque Pest Control
 
-Landing page for Enfoque Control built with Astro and Tailwind CSS.
+Static marketing website for Enfoque Pest Control in Monterrey, Mexico. The site helps visitors identify a pest-control need, understand the available services, and start a quotation conversation.
 
-## Tech Stack
+## Stack
 
-- [Astro](https://astro.build)
-- [Tailwind CSS](https://tailwindcss.com)
+- [Astro](https://astro.build/) 7
+- TypeScript
+- Plain CSS scoped to Astro components
+- Static output
 
-## Directory Structure
+The project intentionally has no client-side framework or Tailwind dependency. Keep the browser payload small unless an interaction clearly requires JavaScript.
 
-```
-/
-├── public/
-│   ├── bg-image.webp
-│   └── favicon.ico
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── layouts/
-│   └── pages/
-└── package.json
-```
+## Requirements
 
-## Development
+- Node.js 24
+- npm 11
 
-### Prerequisites
+The expected versions are documented in `.nvmrc` and `package.json`.
 
-- Node.js 16+
-- npm/yarn/pnpm
+## Local development
 
-### Setup
-
-1. Clone the repository
 ```bash
-git clone https://github.com/jorgemgr94/enfoquecontrol-ui.git
-```
-
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Start development server
-```bash
+nvm use
+npm ci
 npm run dev
 ```
 
-## Available Commands
+Astro serves the site at `http://localhost:4321` by default.
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
+## Commands
 
-## Deployment
+| Command                | Purpose                                  |
+| ---------------------- | ---------------------------------------- |
+| `npm run dev`          | Start the local development server       |
+| `npm run format`       | Format supported files with Prettier     |
+| `npm run format:check` | Verify formatting without changing files |
+| `npm run typecheck`    | Run Astro and TypeScript diagnostics     |
+| `npm run build`        | Generate the production site in `dist/`  |
+| `npm run preview`      | Preview the production build locally     |
+| `npm run check`        | Run the complete local quality gate      |
 
-The site is deployed automatically through GitHub Actions when changes are pushed to the main branch.
+## Project map
 
-## Features
+```text
+src/
+├── assets/       Local images processed by Astro
+├── components/   Landing-page sections and reusable UI
+├── layouts/      Shared document shell and metadata
+└── pages/        Route entry points
+public/           Files served without processing
+```
 
-- Responsive design
-- Fast loading with optimized assets
-- SEO friendly
-- Contact form integration
+No environment variables are required for the current static site.
 
-## Contributing
+## Delivery
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+Pull requests must use a [Conventional Commits](https://www.conventionalcommits.org/) title and pass formatting, type checking, and the production build. Dependabot checks npm and GitHub Actions dependencies monthly.
 
-## License
-
-MIT
-
-## Contact
-
-For questions or support, please contact [Enfoque Control](https://enfoquecontrol.com).
+See [CONTRIBUTING.md](CONTRIBUTING.md) before making changes.
