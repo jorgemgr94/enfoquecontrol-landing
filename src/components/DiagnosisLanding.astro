@@ -93,7 +93,8 @@ const schema = {
 		</a>
 		<nav aria-label="Navegación principal">
 			<a href="#soluciones">Soluciones</a>
-			<a href="#como-ayudamos">Cómo ayudamos</a>
+			<a href="#proceso">Proceso</a>
+			<a href="#cobertura">Cobertura</a>
 			<a href="#preguntas">Preguntas</a>
 		</nav>
 		<a
@@ -203,7 +204,7 @@ const schema = {
 		</div>
 	</section>
 
-	<section class="photo-story">
+	<section class="photo-story" id="proceso">
 		<div class="photo-shell">
 			<div class="story-top">
 				<div class="photo-wrap">
@@ -245,7 +246,7 @@ const schema = {
 		</div>
 	</section>
 
-	<section class="conversation" id="como-ayudamos">
+	<section class="conversation">
 		<div class="conversation-copy">
 			<span class="pill">Una conversación basta para empezar</span>
 			<h2>Pregunta. Contexto. Siguiente paso.</h2>
@@ -643,7 +644,7 @@ const schema = {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		object-position: 45% center;
+		object-position: 35% center;
 		transform: scale(1.015);
 		transition: transform 900ms cubic-bezier(.23, 1, .32, 1);
 	}
@@ -682,7 +683,7 @@ const schema = {
 	.hero-diagnostic {
 		position: absolute;
 		z-index: 2;
-		right: 110px;
+		right: 165px;
 		bottom: 0;
 		left: 0;
 		padding: clamp(24px, 2.6vw, 36px);
@@ -1399,11 +1400,25 @@ const schema = {
 		padding: 54px;
 		overflow: hidden;
 		border-radius: 1.4rem;
-		background: #efeee6;
+		background:
+			radial-gradient(circle at 50% 50%, rgba(198, 227, 110, .24), rgba(198, 227, 110, .08) 24%, transparent 49%),
+			linear-gradient(135deg, #eef1e6, #dfe8d8);
+	}
+
+	.coverage-map::before {
+		content: "";
+		position: absolute;
+		z-index: 0;
+		inset: -38%;
+		background: conic-gradient(from 0deg, transparent 0 78%, rgba(198, 227, 110, .38) 88%, transparent 97%);
+		opacity: .72;
+		animation: radar-sweep 14s linear infinite;
+		pointer-events: none;
 	}
 
 	.map-rings {
 		position: absolute;
+		z-index: 1;
 		top: 50%;
 		left: 50%;
 		width: 450px;
@@ -1415,7 +1430,7 @@ const schema = {
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		border: 1px solid rgba(47, 122, 73, .17);
+		border: 1px solid rgba(47, 122, 73, .3);
 		border-radius: 50%;
 		transform: translate(-50%, -50%);
 	}
@@ -1441,16 +1456,16 @@ const schema = {
 		left: 50%;
 		width: 14px;
 		height: 14px;
-		border: 3px solid #efeee6;
+		border: 3px solid #e4eadc;
 		border-radius: 50%;
-		background: #2f7a49;
-		box-shadow: 0 0 0 1px #2f7a49, 0 0 0 14px rgba(47, 122, 73, .08);
+		background: #c6e36e;
+		box-shadow: 0 0 0 1px #2f7a49, 0 0 0 14px rgba(47, 122, 73, .12), 0 0 32px rgba(198, 227, 110, .5);
 		transform: translate(-50%, -50%);
 	}
 
 	.coverage-map ul {
 		position: relative;
-		z-index: 1;
+		z-index: 2;
 		margin: 0;
 		padding: 0;
 		display: grid;
@@ -1462,8 +1477,20 @@ const schema = {
 	.coverage-map li {
 		display: flex;
 		align-items: center;
+		gap: 8px;
+		color: #234d37;
 		font-size: .75rem;
 		font-weight: 750;
+	}
+
+	.coverage-map li::before {
+		content: "";
+		width: 6px;
+		height: 6px;
+		flex: 0 0 6px;
+		border-radius: 50%;
+		background: #7fa647;
+		box-shadow: 0 0 0 4px rgba(127, 166, 71, .12);
 	}
 
 	.coverage-map li:nth-child(2),
@@ -1475,6 +1502,12 @@ const schema = {
 	.coverage-map li:nth-child(4),
 	.coverage-map li:nth-child(8) {
 		transform: translateY(330px);
+	}
+
+	@keyframes radar-sweep {
+		to {
+			transform: rotate(1turn);
+		}
 	}
 
 	footer {
@@ -1903,6 +1936,10 @@ const schema = {
 
 		.context-grid article.reveal-item {
 			transition-delay: 0ms;
+		}
+
+		.coverage-map::before {
+			animation: none;
 		}
 	}
 </style>
