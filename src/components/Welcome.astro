@@ -1,72 +1,1923 @@
 ---
 import logo from "../assets/enfoque-logo.png";
-import whatsappIcon from "../assets/whatsapp-icon.png";
+
+const whatsappNumber = "5218118791398";
+const whatsappBase = `https://wa.me/${whatsappNumber}`;
+
+const services = [
+	{
+		number: "01",
+		title: "Hogar",
+		description: "Tratamientos para casas y departamentos, definidos según el tipo de plaga y las condiciones del espacio.",
+		tags: ["Cucarachas", "Hormigas", "Arañas", "Chinches"],
+		message: "Hola, necesito información sobre control de plagas para mi hogar.",
+	},
+	{
+		number: "02",
+		title: "Negocio",
+		description: "Planes preventivos y correctivos para comercios, oficinas, restaurantes y espacios de atención al público.",
+		tags: ["Comercios", "Oficinas", "Restaurantes", "Locales"],
+		message: "Hola, necesito información sobre control de plagas para mi negocio.",
+	},
+	{
+		number: "03",
+		title: "Industria",
+		description: "Atención para bodegas, plantas y áreas operativas donde la continuidad y el seguimiento son esenciales.",
+		tags: ["Bodegas", "Plantas", "Almacenes", "Monitoreo"],
+		message: "Hola, necesito información sobre control de plagas para una instalación industrial.",
+	},
+];
+
+const pests = [
+	["Cucarachas", "Interiores y drenajes"],
+	["Roedores", "Casas, comercios y almacenes"],
+	["Termitas", "Madera y estructuras"],
+	["Mosquitos", "Patios y áreas exteriores"],
+	["Chinches", "Recámaras y hospedaje"],
+	["Hormigas", "Interiores y perímetros"],
+];
+
+const coverage = [
+	"Monterrey",
+	"San Nicolás",
+	"Guadalupe",
+	"Apodaca",
+	"Escobedo",
+	"Santa Catarina",
+	"San Pedro",
+	"Área metropolitana",
+];
+
+const faqs = [
+	{
+		question: "¿Qué información necesitan para cotizar?",
+		answer: "Cuéntanos qué plaga observaste, en qué municipio estás y si se trata de una casa, negocio o instalación industrial. Si puedes, envía fotos del área por WhatsApp para orientar mejor la primera conversación.",
+	},
+	{
+		question: "¿El tratamiento es igual para cualquier plaga?",
+		answer: "No. El método, la preparación y el seguimiento dependen de la especie, el nivel de actividad y las condiciones del inmueble. Primero se revisa el caso y después se recomienda el tratamiento.",
+	},
+	{
+		question: "¿Debo salir del inmueble durante el servicio?",
+		answer: "Depende del tratamiento indicado. Antes de la visita te compartiremos las instrucciones de preparación y el tiempo de reingreso aplicable a tu caso.",
+	},
+	{
+		question: "¿Atienden casas y empresas?",
+		answer: "Sí. La atención se adapta a espacios residenciales, comerciales e industriales. Confirma la disponibilidad para tu zona y tipo de inmueble por WhatsApp.",
+	},
+	{
+		question: "¿Cómo sé si necesito atención profesional?",
+		answer: "Si la actividad es recurrente, hay rastros en distintas áreas, existe daño material o el problema reaparece después de medidas caseras, conviene solicitar una evaluación.",
+	},
+];
+
+const schema = {
+	"@context": "https://schema.org",
+	"@type": "PestControl",
+	name: "Enfoque Pest Control",
+	url: "https://www.enfoquecontrol.com",
+	telephone: "+52 81 1879 1398",
+	image: "https://www.enfoquecontrol.com/bg-image.webp",
+	areaServed: coverage,
+	contactPoint: {
+		"@type": "ContactPoint",
+		telephone: "+52 81 1879 1398",
+		contactType: "customer service",
+		availableLanguage: "Spanish",
+	},
+};
 ---
 
-<head>
-	<meta
-		name="description"
-		content="Enfoque Pest Control - Soluciones rápidas y efectivas para el control de plagas. Contáctanos en WhatsApp."
-	/>
-	<meta
-		name="keywords"
-		content="control de plagas, soluciones de plagas, servicios de control de plagas"
-	/>
-	<meta name="author" content="Enfoque Pest Control" />
-</head>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
+<header class="site-header">
+	<div class="header-inner">
+		<a class="brand" href="#inicio" aria-label="Enfoque Pest Control, inicio">
+			<img src={logo.src} alt="Enfoque Pest Control" width="462" height="221" />
+		</a>
 
+		<nav aria-label="Navegación principal">
+			<a href="#servicios">Servicios</a>
+			<a href="#proceso">Proceso</a>
+			<a href="#cobertura">Cobertura</a>
+			<a href="#preguntas">Preguntas</a>
+		</nav>
 
-<div class="relative">
-	<header class="relative flex items-center max-w-4xl mx-auto mt-12">
-		<!-- Logo with absolute positioning -->
-		<div class="logo absolute top-0 left-0 mt-12">
-			<img src={logo.src} alt="logo" class="w-48" loading="lazy" />
-		</div>
-	</header>
-	<div class="container mx-auto flex flex-col items-center justify-center max-w-2xl px-4 py-8 h-screen">
-		<h1 class="text-3xl font-bold sm:text-4xl text-green-500">¡Estamos trabajando para ti!</h1>
-
-		<p class="text-base mt-6 text-gray-100 sm:text-lg">
-			Este sitio web pronto estará lleno de soluciones para controlar cualquier
-			tipo de plaga. Pronto podrás descubrir servicios efectivos, rápidos y
-			profesionales.
-		</p>
-
-		<div
-			id="contact-container"
-			class="flex flex-col items-center justify-center mt-6"
+		<a
+			class="header-cta"
+			href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`}
+			target="_blank"
+			rel="noreferrer"
 		>
+			<span class="status-dot" aria-hidden="true"></span>
+			Cotizar por WhatsApp
+		</a>
+	</div>
+</header>
+
+<main id="contenido">
+	<section class="hero" id="inicio">
+		<div class="perimeter-line" aria-hidden="true"></div>
+		<div class="hero-inner">
+			<div class="hero-copy">
+				<p class="eyebrow"><span>Control profesional</span> Monterrey y área metropolitana</p>
+				<h1>Recupera el control de tu espacio.</h1>
+				<p class="hero-lede">
+					Atención para hogares, negocios e industria. Cuéntanos qué estás viendo y recibe una orientación clara para el siguiente paso.
+				</p>
+				<div class="hero-actions">
+					<a
+						class="button button-primary"
+						href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.52 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.58 5.93L.1 23.9l6.28-1.64a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.31 11.88-11.85 0-3.17-1.23-6.14-3.46-8.37Zm-8.42 18.21h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.82 9.82 0 0 1-1.51-5.25c0-5.43 4.44-9.85 9.9-9.85a9.8 9.8 0 0 1 7 2.9 9.77 9.77 0 0 1 2.9 6.97c0 5.43-4.45 9.84-9.91 9.84Zm5.43-7.37c-.3-.15-1.76-.86-2.03-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47a8.9 8.9 0 0 1-1.66-2.06c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.07 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg>
+						Resolver mi caso
+						<span aria-hidden="true">↗</span>
+					</a>
+					<a class="button button-secondary" href="tel:+528118791398">
+						Llamar al 81 1879 1398
+					</a>
+				</div>
+				<p class="hero-note">Comparte fotos por WhatsApp para dar contexto a tu caso.</p>
+			</div>
+
+			<div class="hero-visual">
+				<div class="image-frame">
+					<img
+						src="/bg-image.webp"
+						alt="Técnico realizando una inspección de control de plagas en una vivienda"
+						width="1920"
+						height="1282"
+						loading="eager"
+						fetchpriority="high"
+					/>
+					<div class="image-label">
+						<span>01</span>
+						<div>
+							<strong>Primero entendemos el problema.</strong>
+							<small>Después definimos el tratamiento.</small>
+						</div>
+					</div>
+				</div>
+				<div class="scope-card">
+					<span>Atención</span>
+					<strong>Residencial · Comercial · Industrial</strong>
+				</div>
+			</div>
+		</div>
+
+		<div class="hero-index">
+			<span>ENFOQUE / CONTROL DE PLAGAS</span>
+			<span aria-hidden="true">N 25.6866° · W 100.3161°</span>
+		</div>
+	</section>
+
+	<section class="problem-strip" aria-label="Tipos de atención">
+		<div class="problem-strip-inner">
+			<p>Una plaga no se resuelve con una respuesta genérica.</p>
+			<ul>
+				<li>Identificar</li>
+				<li>Tratar</li>
+				<li>Prevenir</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section services" id="servicios">
+		<div class="section-heading">
+			<p class="section-kicker">Servicios / 01</p>
+			<div>
+				<h2>El tratamiento correcto empieza por el contexto.</h2>
+				<p>El mismo problema se comporta distinto en una cocina, una bodega o un área de atención al público.</p>
+			</div>
+		</div>
+
+		<div class="service-list">
+			{services.map((service) => (
+				<article class="service-row">
+					<span class="service-number">{service.number}</span>
+					<div class="service-main">
+						<h3>{service.title}</h3>
+						<p>{service.description}</p>
+					</div>
+					<ul class="service-tags" aria-label={`Ejemplos para ${service.title}`}>
+						{service.tags.map((tag) => <li>{tag}</li>)}
+					</ul>
+					<a
+						class="service-link"
+						href={`${whatsappBase}?text=${encodeURIComponent(service.message)}`}
+						target="_blank"
+						rel="noreferrer"
+						aria-label={`Consultar servicio para ${service.title} por WhatsApp`}
+					>
+						<span>Consultar</span>
+						<span aria-hidden="true">↗</span>
+					</a>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="section pest-section">
+		<div class="pest-intro">
+			<p class="section-kicker section-kicker-light">Problemas frecuentes / 02</p>
+			<h2>¿Qué estás observando?</h2>
+			<p>Identificar señales, rutas y condiciones del espacio ayuda a elegir una intervención más adecuada.</p>
+		</div>
+		<ol class="pest-grid">
+			{pests.map(([name, context], index) => (
+				<li>
+					<span>{String(index + 1).padStart(2, "0")}</span>
+					<div>
+						<strong>{name}</strong>
+						<small>{context}</small>
+					</div>
+					<svg aria-hidden="true" viewBox="0 0 40 40"><path d="M8 20h24M23 11l9 9-9 9"/></svg>
+				</li>
+			))}
+		</ol>
+	</section>
+
+	<section class="section process" id="proceso">
+		<div class="section-heading">
+			<p class="section-kicker">Método / 03</p>
+			<div>
+				<h2>Un proceso entendible de principio a fin.</h2>
+				<p>Sin promesas absolutas. Con información suficiente para tomar una buena decisión.</p>
+			</div>
+		</div>
+
+		<div class="process-track">
+			<div class="track-line" aria-hidden="true"></div>
+			<article>
+				<span>01</span>
+				<h3>Cuéntanos</h3>
+				<p>Comparte el tipo de espacio, municipio y señales que has observado.</p>
+			</article>
+			<article>
+				<span>02</span>
+				<h3>Revisamos</h3>
+				<p>Con el contexto inicial se determina si hace falta una inspección o información adicional.</p>
+			</article>
+			<article>
+				<span>03</span>
+				<h3>Tratamos</h3>
+				<p>Se define la intervención según la plaga y las condiciones específicas del inmueble.</p>
+			</article>
+			<article>
+				<span>04</span>
+				<h3>Prevenimos</h3>
+				<p>Recibes indicaciones para reducir condiciones que favorecen la reaparición.</p>
+			</article>
+		</div>
+	</section>
+
+	<section class="diagnostic" id="diagnostico">
+		<div class="diagnostic-inner">
+			<div class="diagnostic-copy">
+				<p class="section-kicker section-kicker-light">Diagnóstico inicial / 04</p>
+				<h2>Tres datos.<br />Un mensaje listo.</h2>
+				<p>Completa lo esencial y abre WhatsApp con tu solicitud redactada. No guardamos información en este sitio.</p>
+				<div class="privacy-note">
+					<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.6 2.9 8.9 7 10 4.1-1.1 7-5.4 7-10V6l-7-3Zm0 4v10m-4-6h8"/></svg>
+					<span>Tu información viaja directamente a WhatsApp.</span>
+				</div>
+			</div>
+
+			<form class="diagnostic-form" id="whatsapp-form">
+				<div class="field">
+					<label for="space">¿Qué espacio necesitas atender?</label>
+					<select id="space" name="space" required>
+						<option value="">Selecciona una opción</option>
+						<option>Casa o departamento</option>
+						<option>Negocio o comercio</option>
+						<option>Oficina</option>
+						<option>Restaurante</option>
+						<option>Bodega o industria</option>
+						<option>Otro espacio</option>
+					</select>
+				</div>
+
+				<div class="field">
+					<label for="pest">¿Qué plaga observaste?</label>
+					<select id="pest" name="pest" required>
+						<option value="">Selecciona una opción</option>
+						<option>Cucarachas</option>
+						<option>Roedores</option>
+						<option>Termitas</option>
+						<option>Mosquitos</option>
+						<option>Chinches</option>
+						<option>Hormigas</option>
+						<option>No estoy seguro</option>
+					</select>
+				</div>
+
+				<div class="field">
+					<label for="municipality">¿En qué municipio estás?</label>
+					<input id="municipality" name="municipality" type="text" autocomplete="address-level2" placeholder="Ej. Monterrey" required />
+				</div>
+
+				<button class="button form-submit" type="submit">
+					Preparar mensaje
+					<span aria-hidden="true">↗</span>
+				</button>
+				<p class="form-hint">Se abrirá una conversación con Enfoque Pest Control.</p>
+			</form>
+		</div>
+	</section>
+
+	<section class="section coverage" id="cobertura">
+		<div class="coverage-copy">
+			<p class="section-kicker">Cobertura / 05</p>
+			<h2>Cerca cuando importa.</h2>
+			<p>Atención en Monterrey y municipios del área metropolitana. Confirma disponibilidad para tu ubicación al solicitar información.</p>
 			<a
+				class="text-link"
+				href={`${whatsappBase}?text=${encodeURIComponent("Hola, quiero confirmar si tienen cobertura en mi municipio.")}`}
 				target="_blank"
-				href="https://wa.me/5218118791398"
-				class="mt-4 inline-flex items-center justify-center bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600"
+				rel="noreferrer"
 			>
-				<img src={whatsappIcon.src} alt="WhatsApp Icon" class="w-8 mr-2" />
-				<span>Contáctanos en WhatsApp</span>
+				Confirmar mi zona <span aria-hidden="true">↗</span>
 			</a>
 		</div>
+		<div class="coverage-map" aria-label="Municipios atendidos">
+			<div class="map-rings" aria-hidden="true">
+				<span></span><span></span><span></span>
+				<i></i>
+			</div>
+			<ul>
+				{coverage.map((city, index) => (
+					<li>
+						<span>{String(index + 1).padStart(2, "0")}</span>
+						{city}
+					</li>
+				))}
+			</ul>
+		</div>
+	</section>
+
+	<section class="section faq" id="preguntas">
+		<div class="faq-heading">
+			<p class="section-kicker">Preguntas / 06</p>
+			<h2>Antes de agendar.</h2>
+			<p>Las respuestas específicas sobre preparación y seguridad se confirman una vez identificado el tratamiento.</p>
+		</div>
+		<div class="faq-list">
+			{faqs.map((faq, index) => (
+				<details open={index === 0}>
+					<summary>
+						<span>{faq.question}</span>
+						<i aria-hidden="true"></i>
+					</summary>
+					<p>{faq.answer}</p>
+				</details>
+			))}
+		</div>
+	</section>
+
+	<section class="final-cta">
+		<div class="final-cta-inner">
+			<p class="section-kicker section-kicker-light">El siguiente paso</p>
+			<h2>No tienes que saber qué tratamiento necesitas.</h2>
+			<p>Solo cuéntanos qué está pasando. Nosotros te ayudamos a enfocar el problema.</p>
+			<a
+				class="button button-signal"
+				href={`${whatsappBase}?text=${encodeURIComponent("Hola, quiero orientación para resolver un problema de plagas.")}`}
+				target="_blank"
+				rel="noreferrer"
+			>
+				Escribir por WhatsApp
+				<span aria-hidden="true">↗</span>
+			</a>
+		</div>
+	</section>
+</main>
+
+<footer>
+	<div class="footer-inner">
+		<div class="footer-brand">
+			<img src={logo.src} alt="Enfoque Pest Control" width="462" height="221" loading="lazy" />
+			<p>Control profesional de plagas en Monterrey y su área metropolitana.</p>
+		</div>
+		<div class="footer-contact">
+			<span>Contacto directo</span>
+			<a href="tel:+528118791398">81 1879 1398</a>
+			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito información.")}`} target="_blank" rel="noreferrer">WhatsApp ↗</a>
+		</div>
+		<div class="footer-links">
+			<span>Explorar</span>
+			<a href="#servicios">Servicios</a>
+			<a href="#proceso">Proceso</a>
+			<a href="#cobertura">Cobertura</a>
+			<a href="#preguntas">Preguntas frecuentes</a>
+		</div>
 	</div>
-</div>
+	<div class="footer-bottom">
+		<span>© {new Date().getFullYear()} Enfoque Pest Control</span>
+		<span>Monterrey, Nuevo León</span>
+	</div>
+</footer>
+
+<a
+	class="floating-whatsapp"
+	href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`}
+	target="_blank"
+	rel="noreferrer"
+	aria-label="Contactar a Enfoque Pest Control por WhatsApp"
+>
+	<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.52 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.58 5.93L.1 23.9l6.28-1.64a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.31 11.88-11.85 0-3.17-1.23-6.14-3.46-8.37Zm-8.42 18.21h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.82 9.82 0 0 1-1.51-5.25c0-5.43 4.44-9.85 9.9-9.85a9.8 9.8 0 0 1 7 2.9 9.77 9.77 0 0 1 2.9 6.97c0 5.43-4.45 9.84-9.91 9.84Z"/></svg>
+	<span>WhatsApp</span>
+</a>
+
+<script>
+	const form = document.querySelector<HTMLFormElement>("#whatsapp-form");
+	const whatsappNumber = "5218118791398";
+
+	form?.addEventListener("submit", (event) => {
+		event.preventDefault();
+		const data = new FormData(form);
+		const space = data.get("space");
+		const pest = data.get("pest");
+		const municipality = data.get("municipality");
+		const message = `Hola, necesito orientación para control de plagas.\n\nEspacio: ${space}\nPlaga: ${pest}\nMunicipio: ${municipality}`;
+		window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+	});
+</script>
 
 <style>
-	body {
-		margin: 0;
-		font-family: sans-serif;
-	}
-
-	.relative::before {
-		content: "";
-		position: fixed;
+	.site-header {
+		position: absolute;
+		z-index: 20;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		color: var(--white);
+	}
+
+	.header-inner {
+		width: var(--page);
+		height: 104px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 200px 1fr auto;
+		align-items: center;
+		gap: 32px;
+		border-bottom: 1px solid var(--line-on-dark);
+	}
+
+	.brand {
+		display: inline-flex;
+		width: 178px;
+		height: 64px;
+		align-items: center;
+	}
+
+	.brand img {
+		display: block;
+		width: 100%;
+		height: auto;
+		filter: brightness(0) invert(1);
+	}
+
+	nav {
+		display: flex;
+		justify-content: center;
+		gap: 28px;
+	}
+
+	nav a,
+	.footer-links a {
+		position: relative;
+		color: inherit;
+		font-size: 0.82rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	nav a {
+		color: rgba(255, 255, 255, 0.72);
+	}
+
+	nav a:hover {
+		color: var(--white);
+	}
+
+	.header-cta {
+		display: inline-flex;
+		min-height: 44px;
+		align-items: center;
+		gap: 10px;
+		padding: 0 18px;
+		border: 1px solid rgba(255, 255, 255, 0.28);
+		border-radius: var(--radius-sm);
+		color: var(--white);
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-decoration: none;
+		transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), border-color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.header-cta:hover {
+		border-color: rgba(255, 255, 255, 0.5);
+		background: rgba(255, 255, 255, 0.09);
+	}
+
+	.header-cta:active,
+	.button:active,
+	.service-link:active,
+	.floating-whatsapp:active {
+		transform: scale(0.97);
+	}
+
+	.status-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--signal-400);
+		box-shadow: 0 0 0 4px rgba(197, 236, 100, 0.14);
+	}
+
+	.hero {
+		position: relative;
+		min-height: 860px;
+		overflow: hidden;
 		background:
-			linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-			url(/bg-image.webp)
-				no-repeat center center;
-		background-size: cover;
-		z-index: -1;
+			radial-gradient(circle at 78% 24%, rgba(102, 155, 93, 0.13), transparent 32%),
+			var(--perimeter-950);
+		color: var(--white);
+	}
+
+	.hero::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		opacity: 0.16;
+		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+	}
+
+	.perimeter-line {
+		position: absolute;
+		z-index: 1;
+		top: 104px;
+		right: -80px;
+		width: 48vw;
+		height: 600px;
+		border: 1px solid rgba(197, 236, 100, 0.34);
+		border-left: 0;
+		border-radius: 0 0 0 220px;
+	}
+
+	.perimeter-line::before,
+	.perimeter-line::after {
+		content: "";
+		position: absolute;
+		border: 1px solid rgba(197, 236, 100, 0.12);
+		border-radius: 50%;
+	}
+
+	.perimeter-line::before {
+		width: 400px;
+		height: 400px;
+		right: 90px;
+		bottom: -200px;
+	}
+
+	.perimeter-line::after {
+		width: 240px;
+		height: 240px;
+		right: 170px;
+		bottom: -120px;
+	}
+
+	.hero-inner {
+		position: relative;
+		z-index: 2;
+		width: var(--page);
+		margin: 0 auto;
+		padding: 190px 0 112px;
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+		align-items: center;
+		gap: clamp(48px, 7vw, 104px);
+	}
+
+	.eyebrow,
+	.section-kicker {
+		margin: 0;
+		color: var(--field-600);
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+	}
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		color: rgba(255, 255, 255, 0.55);
+	}
+
+	.eyebrow span {
+		color: var(--signal-400);
+	}
+
+	.eyebrow::before {
+		content: "";
+		width: 32px;
+		height: 1px;
+		background: var(--signal-400);
+	}
+
+	h1,
+	h2,
+	h3,
+	p {
+		text-wrap: pretty;
+	}
+
+	h1,
+	h2 {
+		text-wrap: balance;
+	}
+
+	h1 {
+		max-width: 760px;
+		margin: 28px 0 24px;
+		font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+		font-size: clamp(4.25rem, 7.7vw, 7.25rem);
+		font-stretch: condensed;
+		font-weight: 700;
+		letter-spacing: -0.075em;
+		line-height: 0.86;
+	}
+
+	.hero-lede {
+		max-width: 610px;
+		margin: 0;
+		color: rgba(255, 255, 255, 0.7);
+		font-size: clamp(1rem, 1.6vw, 1.18rem);
+		line-height: 1.65;
+	}
+
+	.hero-actions {
+		margin-top: 36px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	.button {
+		display: inline-flex;
+		min-height: 52px;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		padding: 0 22px;
+		border: 0;
+		border-radius: var(--radius-sm);
+		font-size: 0.86rem;
+		font-weight: 800;
+		text-decoration: none;
+		cursor: pointer;
+		transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.button svg {
+		width: 18px;
+		height: 18px;
+		fill: currentColor;
+	}
+
+	.button-primary {
+		background: var(--signal-400);
+		color: var(--perimeter-950);
+	}
+
+	.button-primary:hover,
+	.button-signal:hover {
+		background: var(--white);
+	}
+
+	.button-secondary {
+		border: 1px solid var(--line-on-dark);
+		background: transparent;
+		color: var(--white);
+	}
+
+	.button-secondary:hover {
+		background: rgba(255, 255, 255, 0.08);
+	}
+
+	.hero-note {
+		margin: 18px 0 0;
+		color: rgba(255, 255, 255, 0.45);
+		font-size: 0.76rem;
+	}
+
+	.hero-visual {
+		position: relative;
+		min-width: 0;
+	}
+
+	.image-frame {
+		position: relative;
+		overflow: hidden;
+		border-radius: 0 0 96px 0;
+		box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+	}
+
+	.image-frame::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+		pointer-events: none;
+	}
+
+	.image-frame > img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 0.92;
+		object-fit: cover;
+		object-position: 56% center;
+		filter: saturate(0.72) contrast(1.04);
+	}
+
+	.image-label {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		display: grid;
+		grid-template-columns: 44px 1fr;
+		align-items: center;
+		gap: 18px;
+		padding: 22px 24px;
+		background: rgba(16, 35, 27, 0.88);
+		backdrop-filter: blur(14px);
+	}
+
+	.image-label > span {
+		display: grid;
+		width: 38px;
+		height: 38px;
+		place-items: center;
+		border: 1px solid var(--line-on-dark);
+		border-radius: 50%;
+		color: var(--signal-400);
+		font-size: 0.66rem;
+		font-weight: 800;
+	}
+
+	.image-label strong,
+	.image-label small {
+		display: block;
+	}
+
+	.image-label strong {
+		font-size: 0.86rem;
+	}
+
+	.image-label small {
+		margin-top: 2px;
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.72rem;
+	}
+
+	.scope-card {
+		position: absolute;
+		top: 38px;
+		left: -42px;
+		width: 210px;
+		padding: 18px;
+		border-radius: var(--radius-md);
+		background: var(--white);
+		box-shadow: var(--shadow-lift);
+		color: var(--ink-900);
+	}
+
+	.scope-card span,
+	.scope-card strong {
+		display: block;
+	}
+
+	.scope-card span {
+		margin-bottom: 7px;
+		color: var(--field-600);
+		font-size: 0.62rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.scope-card strong {
+		font-size: 0.82rem;
+		line-height: 1.45;
+	}
+
+	.hero-index {
+		position: absolute;
+		z-index: 2;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: var(--page);
+		height: 52px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-top: 1px solid var(--line-on-dark);
+		color: rgba(255, 255, 255, 0.35);
+		font-size: 0.58rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+	}
+
+	.problem-strip {
+		background: var(--signal-400);
+		color: var(--perimeter-950);
+	}
+
+	.problem-strip-inner {
+		width: var(--page);
+		min-height: 92px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 40px;
+	}
+
+	.problem-strip p {
+		margin: 0;
+		font-size: clamp(1.05rem, 2vw, 1.35rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+	}
+
+	.problem-strip ul {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		list-style: none;
+	}
+
+	.problem-strip li {
+		padding: 0 22px;
+		border-left: 1px solid rgba(16, 35, 27, 0.25);
+		font-size: 0.7rem;
+		font-weight: 800;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+	}
+
+	.section {
+		width: var(--page);
+		margin: 0 auto;
+		padding: clamp(88px, 11vw, 144px) 0;
+	}
+
+	.section-heading {
+		display: grid;
+		grid-template-columns: 0.35fr 1fr;
+		gap: 40px;
+		align-items: start;
+	}
+
+	.section-heading > div {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(240px, 0.45fr);
+		gap: 56px;
+		align-items: end;
+	}
+
+	.section h2,
+	.diagnostic h2,
+	.final-cta h2 {
+		margin: 0;
+		font-family: "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+		font-size: clamp(2.8rem, 5vw, 5.1rem);
+		font-stretch: condensed;
+		font-weight: 700;
+		letter-spacing: -0.065em;
+		line-height: 0.95;
+	}
+
+	.section-heading > div > p,
+	.pest-intro > p:last-child,
+	.coverage-copy > p,
+	.faq-heading > p {
+		margin: 0;
+		color: var(--ink-500);
+		font-size: 0.92rem;
+		line-height: 1.7;
+	}
+
+	.service-list {
+		margin-top: 72px;
+		border-top: 1px solid var(--line);
+	}
+
+	.service-row {
+		display: grid;
+		grid-template-columns: 54px minmax(240px, 1fr) minmax(220px, 0.85fr) 104px;
+		align-items: center;
+		gap: 32px;
+		padding: 34px 0;
+		border-bottom: 1px solid var(--line);
+		transition: padding 180ms cubic-bezier(0.23, 1, 0.32, 1), background-color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.service-row:hover {
+		padding-right: 18px;
+		padding-left: 18px;
+		background: var(--paper-100);
+	}
+
+	.service-number {
+		color: var(--field-600);
+		font-size: 0.68rem;
+		font-weight: 800;
+	}
+
+	.service-main h3 {
+		margin: 0 0 8px;
+		font-size: clamp(1.55rem, 3vw, 2.15rem);
+		letter-spacing: -0.045em;
+	}
+
+	.service-main p {
+		max-width: 510px;
+		margin: 0;
+		color: var(--ink-500);
+		font-size: 0.86rem;
+	}
+
+	.service-tags {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 7px;
+		list-style: none;
+	}
+
+	.service-tags li {
+		padding: 6px 9px;
+		border: 1px solid var(--line);
+		border-radius: 999px;
+		color: var(--ink-700);
+		font-size: 0.66rem;
+		font-weight: 650;
+	}
+
+	.service-link {
+		display: flex;
+		min-height: 44px;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		color: var(--ink-900);
+		font-size: 0.75rem;
+		font-weight: 800;
+		text-decoration: none;
+		transition: color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.service-link:hover {
+		color: var(--field-600);
+	}
+
+	.pest-section {
+		width: 100%;
+		padding-right: max(20px, calc((100% - 1180px) / 2));
+		padding-left: max(20px, calc((100% - 1180px) / 2));
+		display: grid;
+		grid-template-columns: 0.75fr 1.25fr;
+		gap: clamp(64px, 9vw, 130px);
+		background: var(--perimeter-900);
+		color: var(--white);
+	}
+
+	.section-kicker-light {
+		color: var(--signal-400);
+	}
+
+	.pest-intro h2 {
+		margin: 28px 0 24px;
+	}
+
+	.pest-intro > p:last-child {
+		max-width: 420px;
+		color: rgba(255, 255, 255, 0.55);
+	}
+
+	.pest-grid {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		border-top: 1px solid var(--line-on-dark);
+		list-style: none;
+	}
+
+	.pest-grid li {
+		min-height: 120px;
+		padding: 24px;
+		display: grid;
+		grid-template-columns: 28px 1fr 40px;
+		align-items: center;
+		gap: 16px;
+		border-right: 1px solid var(--line-on-dark);
+		border-bottom: 1px solid var(--line-on-dark);
+	}
+
+	.pest-grid li:nth-child(even) {
+		border-right: 0;
+	}
+
+	.pest-grid li > span {
+		align-self: start;
+		color: var(--signal-400);
+		font-size: 0.62rem;
+		font-weight: 800;
+	}
+
+	.pest-grid strong,
+	.pest-grid small {
+		display: block;
+	}
+
+	.pest-grid strong {
+		font-size: 1.05rem;
+	}
+
+	.pest-grid small {
+		margin-top: 5px;
+		color: rgba(255, 255, 255, 0.45);
+		font-size: 0.69rem;
+	}
+
+	.pest-grid svg {
+		width: 40px;
+		height: 40px;
+		fill: none;
+		stroke: rgba(255, 255, 255, 0.35);
+		stroke-width: 1.2px;
+		transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), stroke 180ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.pest-grid li:hover svg {
+		stroke: var(--signal-400);
+		transform: translateX(4px);
+	}
+
+	.process-track {
+		position: relative;
+		margin-top: 80px;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 36px;
+	}
+
+	.track-line {
+		position: absolute;
+		top: 21px;
+		right: 0;
+		left: 0;
+		height: 1px;
+		background: var(--line);
+	}
+
+	.process-track article {
+		position: relative;
+		padding-top: 76px;
+	}
+
+	.process-track article::before {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		top: 14px;
+		left: 0;
+		width: 15px;
+		height: 15px;
+		border: 4px solid var(--paper-50);
+		border-radius: 50%;
+		background: var(--field-600);
+		box-shadow: 0 0 0 1px var(--field-600);
+	}
+
+	.process-track span {
+		color: var(--field-600);
+		font-size: 0.65rem;
+		font-weight: 800;
+	}
+
+	.process-track h3 {
+		margin: 12px 0 11px;
+		font-size: 1.35rem;
+		letter-spacing: -0.035em;
+	}
+
+	.process-track p {
+		margin: 0;
+		color: var(--ink-500);
+		font-size: 0.8rem;
+		line-height: 1.7;
+	}
+
+	.diagnostic {
+		background: var(--perimeter-950);
+		color: var(--white);
+	}
+
+	.diagnostic-inner {
+		width: var(--page);
+		margin: 0 auto;
+		padding: clamp(88px, 11vw, 140px) 0;
+		display: grid;
+		grid-template-columns: 0.8fr 1.2fr;
+		gap: clamp(64px, 10vw, 140px);
+	}
+
+	.diagnostic-copy h2 {
+		margin: 28px 0 24px;
+	}
+
+	.diagnostic-copy > p:not(.section-kicker) {
+		max-width: 440px;
+		margin: 0;
+		color: rgba(255, 255, 255, 0.56);
+		font-size: 0.88rem;
+		line-height: 1.7;
+	}
+
+	.privacy-note {
+		margin-top: 38px;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		color: rgba(255, 255, 255, 0.52);
+		font-size: 0.71rem;
+	}
+
+	.privacy-note svg {
+		width: 28px;
+		height: 28px;
+		padding: 5px;
+		border: 1px solid var(--line-on-dark);
+		border-radius: 50%;
+		fill: none;
+		stroke: var(--signal-400);
+		stroke-width: 1.5px;
+	}
+
+	.diagnostic-form {
+		padding: clamp(24px, 4vw, 48px);
+		border-radius: var(--radius-lg);
+		background: var(--white);
+		box-shadow: var(--shadow-lift);
+		color: var(--ink-900);
+	}
+
+	.field + .field {
+		margin-top: 26px;
+	}
+
+	.field label {
+		display: block;
+		margin-bottom: 10px;
+		font-size: 0.78rem;
+		font-weight: 750;
+	}
+
+	.field input,
+	.field select {
+		width: 100%;
+		height: 52px;
+		padding: 0 15px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-sm);
+		outline: 0;
+		background: var(--paper-100);
+		color: var(--ink-900);
+		font-size: 0.85rem;
+		transition: border-color 160ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.field input:focus,
+	.field select:focus {
+		border-color: var(--field-600);
+		box-shadow: 0 0 0 3px rgba(47, 122, 73, 0.14);
+	}
+
+	.form-submit {
+		width: 100%;
+		margin-top: 32px;
+		justify-content: space-between;
+		background: var(--perimeter-900);
+		color: var(--white);
+	}
+
+	.form-submit:hover {
+		background: var(--field-600);
+	}
+
+	.form-hint {
+		margin: 12px 0 0;
+		color: var(--ink-500);
+		font-size: 0.67rem;
+		text-align: center;
+	}
+
+	.coverage {
+		display: grid;
+		grid-template-columns: 0.8fr 1.2fr;
+		align-items: center;
+		gap: clamp(72px, 12vw, 160px);
+	}
+
+	.coverage-copy h2 {
+		margin: 28px 0 24px;
+	}
+
+	.text-link {
+		display: inline-flex;
+		min-height: 44px;
+		margin-top: 24px;
+		align-items: center;
+		gap: 12px;
+		color: var(--field-600);
+		font-size: 0.78rem;
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	.text-link:hover {
+		color: var(--perimeter-950);
+	}
+
+	.coverage-map {
+		position: relative;
+		min-height: 500px;
+		padding: 54px;
+		overflow: hidden;
+		border-radius: var(--radius-lg);
+		background: var(--paper-100);
+	}
+
+	.map-rings {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 450px;
+		height: 450px;
+		transform: translate(-50%, -50%);
+	}
+
+	.map-rings span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		border: 1px solid rgba(47, 122, 73, 0.17);
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.map-rings span:nth-child(1) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.map-rings span:nth-child(2) {
+		width: 68%;
+		height: 68%;
+	}
+
+	.map-rings span:nth-child(3) {
+		width: 35%;
+		height: 35%;
+	}
+
+	.map-rings i {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 14px;
+		height: 14px;
+		border: 3px solid var(--paper-100);
+		border-radius: 50%;
+		background: var(--field-600);
+		box-shadow: 0 0 0 1px var(--field-600), 0 0 0 14px rgba(47, 122, 73, 0.08);
+		transform: translate(-50%, -50%);
+	}
+
+	.coverage-map ul {
+		position: relative;
+		z-index: 1;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
+		list-style: none;
+	}
+
+	.coverage-map li {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 0.75rem;
+		font-weight: 750;
+	}
+
+	.coverage-map li:nth-child(2),
+	.coverage-map li:nth-child(5),
+	.coverage-map li:nth-child(7) {
+		transform: translateY(240px);
+	}
+
+	.coverage-map li:nth-child(4),
+	.coverage-map li:nth-child(8) {
+		transform: translateY(330px);
+	}
+
+	.coverage-map li span {
+		color: var(--field-600);
+		font-size: 0.57rem;
+	}
+
+	.faq {
+		display: grid;
+		grid-template-columns: 0.65fr 1.35fr;
+		gap: clamp(64px, 10vw, 140px);
+		border-top: 1px solid var(--line);
+	}
+
+	.faq-heading h2 {
+		margin: 28px 0 22px;
+	}
+
+	.faq-list {
+		border-top: 1px solid var(--line);
+	}
+
+	.faq-list details {
+		border-bottom: 1px solid var(--line);
+	}
+
+	.faq-list summary {
+		min-height: 82px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 24px;
+		font-size: 0.95rem;
+		font-weight: 750;
+		cursor: pointer;
+		list-style: none;
+	}
+
+	.faq-list summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.faq-list summary i {
+		position: relative;
+		flex: 0 0 28px;
+		width: 28px;
+		height: 28px;
+		border: 1px solid var(--line);
+		border-radius: 50%;
+	}
+
+	.faq-list summary i::before,
+	.faq-list summary i::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 10px;
+		height: 1px;
+		background: var(--ink-700);
+		transform: translate(-50%, -50%);
+		transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.faq-list summary i::after {
+		transform: translate(-50%, -50%) rotate(90deg);
+	}
+
+	.faq-list details[open] summary i::after {
+		transform: translate(-50%, -50%) rotate(0);
+	}
+
+	.faq-list details > p {
+		max-width: 660px;
+		margin: -4px 54px 28px 0;
+		color: var(--ink-500);
+		font-size: 0.82rem;
+		line-height: 1.75;
+	}
+
+	.final-cta {
+		position: relative;
+		overflow: hidden;
+		background: var(--field-600);
+		color: var(--white);
+	}
+
+	.final-cta::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		right: -10vw;
+		width: 42vw;
+		height: 42vw;
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		border-radius: 50%;
+		transform: translateY(-50%);
+		box-shadow: 0 0 0 80px rgba(255, 255, 255, 0.035), 0 0 0 160px rgba(255, 255, 255, 0.025);
+	}
+
+	.final-cta-inner {
+		position: relative;
+		z-index: 1;
+		width: var(--page);
+		margin: 0 auto;
+		padding: clamp(96px, 13vw, 168px) 0;
+	}
+
+	.final-cta h2 {
+		max-width: 850px;
+		margin: 28px 0 24px;
+	}
+
+	.final-cta p:not(.section-kicker) {
+		max-width: 600px;
+		margin: 0;
+		color: rgba(255, 255, 255, 0.72);
+	}
+
+	.button-signal {
+		margin-top: 36px;
+		background: var(--signal-400);
+		color: var(--perimeter-950);
+	}
+
+	footer {
+		background: var(--perimeter-950);
+		color: var(--white);
+	}
+
+	.footer-inner {
+		width: var(--page);
+		margin: 0 auto;
+		padding: 72px 0 64px;
+		display: grid;
+		grid-template-columns: 1.5fr 0.75fr 0.75fr;
+		gap: 64px;
+	}
+
+	.footer-brand img {
+		display: block;
+		width: 180px;
+		height: auto;
+		filter: brightness(0) invert(1);
+	}
+
+	.footer-brand p {
+		max-width: 340px;
+		margin: 22px 0 0;
+		color: rgba(255, 255, 255, 0.46);
+		font-size: 0.78rem;
+	}
+
+	.footer-contact,
+	.footer-links {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+
+	.footer-contact > span,
+	.footer-links > span {
+		margin-bottom: 10px;
+		color: rgba(255, 255, 255, 0.35);
+		font-size: 0.61rem;
+		font-weight: 800;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.footer-contact a,
+	.footer-links a {
+		color: rgba(255, 255, 255, 0.75);
+		font-size: 0.77rem;
+		text-decoration: none;
+	}
+
+	.footer-contact a:hover,
+	.footer-links a:hover {
+		color: var(--signal-400);
+	}
+
+	.footer-bottom {
+		width: var(--page);
+		min-height: 58px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-top: 1px solid var(--line-on-dark);
+		color: rgba(255, 255, 255, 0.32);
+		font-size: 0.61rem;
+	}
+
+	.floating-whatsapp {
+		position: fixed;
+		z-index: 50;
+		right: 20px;
+		bottom: 20px;
+		display: none;
+		min-height: 50px;
+		align-items: center;
+		gap: 9px;
+		padding: 0 16px;
+		border-radius: 999px;
+		background: var(--signal-400);
+		box-shadow: 0 10px 28px rgba(16, 35, 27, 0.24);
+		color: var(--perimeter-950);
+		font-size: 0.75rem;
+		font-weight: 850;
+		text-decoration: none;
+		transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1), transform 120ms cubic-bezier(0.23, 1, 0.32, 1);
+	}
+
+	.floating-whatsapp:hover {
+		background: var(--white);
+	}
+
+	.floating-whatsapp svg {
+		width: 18px;
+		height: 18px;
+		fill: currentColor;
+	}
+
+	@media (max-width: 980px) {
+		.header-inner {
+			grid-template-columns: 170px 1fr;
+		}
+
+		.header-inner nav {
+			display: none;
+		}
+
+		.header-cta {
+			justify-self: end;
+		}
+
+		.hero {
+			min-height: auto;
+		}
+
+		.hero-inner {
+			grid-template-columns: 1fr 0.9fr;
+			padding-top: 170px;
+		}
+
+		h1 {
+			font-size: clamp(3.7rem, 8vw, 5.5rem);
+		}
+
+		.scope-card {
+			display: none;
+		}
+
+		.section-heading {
+			grid-template-columns: 1fr;
+			gap: 28px;
+		}
+
+		.service-row {
+			grid-template-columns: 42px 1fr 96px;
+		}
+
+		.service-tags {
+			display: none;
+		}
+
+		.pest-section {
+			grid-template-columns: 1fr;
+		}
+
+		.diagnostic-inner,
+		.coverage,
+		.faq {
+			grid-template-columns: 1fr;
+		}
+
+		.diagnostic-copy {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 18px 48px;
+			align-items: end;
+		}
+
+		.diagnostic-copy .section-kicker {
+			grid-column: 1 / -1;
+		}
+
+		.privacy-note {
+			grid-column: 1 / -1;
+			margin-top: 8px;
+		}
+
+		.coverage-map {
+			min-height: 460px;
+		}
+	}
+
+	@media (max-width: 760px) {
+		.header-inner {
+			height: 88px;
+		}
+
+		.brand {
+			width: 142px;
+		}
+
+		.header-cta {
+			min-height: 40px;
+			padding: 0 13px;
+			font-size: 0.7rem;
+		}
+
+		.header-cta .status-dot {
+			display: none;
+		}
+
+		.hero-inner {
+			padding: 144px 0 92px;
+			grid-template-columns: 1fr;
+			gap: 56px;
+		}
+
+		.perimeter-line {
+			top: 56%;
+			width: 90vw;
+			height: 460px;
+		}
+
+		.hero-visual {
+			width: calc(100% - 20px);
+			margin-left: auto;
+		}
+
+		.image-frame > img {
+			aspect-ratio: 1.2;
+		}
+
+		.hero-index {
+			display: none;
+		}
+
+		.problem-strip-inner {
+			padding: 22px 0;
+			display: block;
+		}
+
+		.problem-strip ul {
+			margin-top: 14px;
+		}
+
+		.problem-strip li:first-child {
+			padding-left: 0;
+			border-left: 0;
+		}
+
+		.section-heading > div {
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
+
+		.process-track {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 48px 28px;
+		}
+
+		.track-line {
+			display: none;
+		}
+
+		.process-track article {
+			padding-top: 48px;
+		}
+
+		.diagnostic-copy {
+			display: block;
+		}
+
+		.diagnostic-copy > p:not(.section-kicker) {
+			margin-top: 24px;
+		}
+
+		.privacy-note {
+			margin-top: 28px;
+		}
+
+		.footer-inner {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.footer-brand {
+			grid-column: 1 / -1;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.header-inner {
+			grid-template-columns: 1fr auto;
+			gap: 12px;
+		}
+
+		.header-cta {
+			width: 44px;
+			padding: 0;
+			font-size: 0;
+		}
+
+		.header-cta::after {
+			content: "↗";
+			font-size: 1rem;
+		}
+
+		.hero-copy .eyebrow {
+			align-items: flex-start;
+			font-size: 0.6rem;
+		}
+
+		h1 {
+			margin-top: 22px;
+			font-size: clamp(3.6rem, 18vw, 5.3rem);
+			line-height: 0.9;
+		}
+
+		.hero-actions {
+			display: grid;
+		}
+
+		.button {
+			width: 100%;
+		}
+
+		.image-frame {
+			border-radius: 0 0 56px 0;
+		}
+
+		.image-frame > img {
+			aspect-ratio: 0.95;
+		}
+
+		.image-label {
+			padding: 17px;
+			grid-template-columns: 34px 1fr;
+			gap: 12px;
+		}
+
+		.image-label > span {
+			width: 32px;
+			height: 32px;
+		}
+
+		.problem-strip ul {
+			justify-content: space-between;
+		}
+
+		.problem-strip li {
+			padding: 0 10px;
+			font-size: 0.6rem;
+		}
+
+		.section {
+			padding-top: 88px;
+			padding-bottom: 88px;
+		}
+
+		.service-list {
+			margin-top: 48px;
+		}
+
+		.service-row {
+			grid-template-columns: 32px 1fr;
+			gap: 14px 8px;
+			padding: 28px 0;
+		}
+
+		.service-row:hover {
+			padding-right: 0;
+			padding-left: 0;
+			background: transparent;
+		}
+
+		.service-link {
+			grid-column: 2;
+			justify-content: flex-start;
+			gap: 10px;
+			color: var(--field-600);
+		}
+
+		.pest-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.pest-grid li,
+		.pest-grid li:nth-child(even) {
+			border-right: 0;
+		}
+
+		.process-track {
+			grid-template-columns: 1fr;
+		}
+
+		.process-track article {
+			padding: 0 0 0 50px;
+		}
+
+		.process-track article::before {
+			top: 3px;
+		}
+
+		.diagnostic-inner {
+			gap: 48px;
+		}
+
+		.diagnostic-form {
+			padding: 22px;
+		}
+
+		.coverage {
+			gap: 56px;
+		}
+
+		.coverage-map {
+			min-height: auto;
+			padding: 28px;
+		}
+
+		.map-rings {
+			opacity: 0.55;
+		}
+
+		.coverage-map ul {
+			grid-template-columns: 1fr;
+		}
+
+		.coverage-map li,
+		.coverage-map li:nth-child(2),
+		.coverage-map li:nth-child(4),
+		.coverage-map li:nth-child(5),
+		.coverage-map li:nth-child(7),
+		.coverage-map li:nth-child(8) {
+			min-height: 36px;
+			transform: none;
+		}
+
+		.faq {
+			gap: 56px;
+		}
+
+		.faq-list summary {
+			min-height: 74px;
+			font-size: 0.86rem;
+		}
+
+		.footer-inner {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.footer-brand {
+			grid-column: auto;
+		}
+
+		.footer-bottom {
+			padding: 18px 0;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 6px;
+		}
+
+		.floating-whatsapp {
+			display: flex;
+		}
 	}
 </style>
