@@ -31,6 +31,17 @@ const signals = [
 	{ value: "No estoy seguro", label: "No estoy seguro", note: "Ayúdame a identificarlo" },
 ];
 
+const coverage = [
+	"Monterrey",
+	"San Nicolás",
+	"Guadalupe",
+	"Apodaca",
+	"Escobedo",
+	"Santa Catarina",
+	"San Pedro",
+	"Área metropolitana",
+];
+
 const faqs = [
 	{
 		question: "¿Puedo enviar fotografías por WhatsApp?",
@@ -234,6 +245,36 @@ const schema = {
 		</div>
 	</section>
 
+	<section class="coverage-section" id="cobertura">
+		<div class="coverage-copy">
+			<p class="coverage-kicker">Cobertura</p>
+			<h2>Cerca cuando importa.</h2>
+			<p>Atención en Monterrey y municipios del área metropolitana. Confirma disponibilidad para tu ubicación al solicitar información.</p>
+			<a
+				class="coverage-link"
+				href={`${whatsappBase}?text=${encodeURIComponent("Hola, quiero confirmar si tienen cobertura en mi municipio.")}`}
+				target="_blank"
+				rel="noreferrer"
+			>
+				Confirmar mi zona <span aria-hidden="true">↗</span>
+			</a>
+		</div>
+		<div class="coverage-map" aria-label="Municipios atendidos">
+			<div class="map-rings" aria-hidden="true">
+				<span></span><span></span><span></span>
+				<i></i>
+			</div>
+			<ul>
+				{coverage.map((city, index) => (
+					<li>
+						<span>{String(index + 1).padStart(2, "0")}</span>
+						{city}
+					</li>
+				))}
+			</ul>
+		</div>
+	</section>
+
 	<section class="faq-section" id="preguntas">
 		<div class="faq-heading">
 			<span class="pill">Antes de agendar</span>
@@ -249,19 +290,6 @@ const schema = {
 		</div>
 	</section>
 
-	<section class="coverage">
-		<div class="coverage-shell">
-			<div class="coverage-copy">
-				<span class="pill pill-light">Cobertura metropolitana</span>
-				<h2>¿Estás en Monterrey o sus alrededores?</h2>
-				<p>Comparte tu municipio por WhatsApp y confirma la disponibilidad para tu zona.</p>
-			</div>
-			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, quiero confirmar si tienen cobertura en mi municipio.")}`} target="_blank" rel="noreferrer">
-				Confirmar cobertura
-				<span aria-hidden="true">↗</span>
-			</a>
-		</div>
-	</section>
 </main>
 
 <footer>
@@ -339,7 +367,7 @@ const schema = {
 	.photo-shell,
 	.conversation,
 	.faq-section,
-	.coverage-shell,
+	.coverage-section,
 	.footer-shell,
 	.footer-bottom {
 		width: min(1180px, calc(100% - 48px));
@@ -695,8 +723,7 @@ const schema = {
 	}
 
 	.hero-diagnostic button,
-	.chat-card > a,
-	.coverage-shell > a {
+	.chat-card > a {
 		min-height: 52px;
 		padding: 0 18px;
 		display: inline-flex;
@@ -715,14 +742,12 @@ const schema = {
 	}
 
 	.hero-diagnostic button:hover,
-	.chat-card > a:hover,
-	.coverage-shell > a:hover {
+	.chat-card > a:hover {
 		background: #fff;
 	}
 
 	.hero-diagnostic button:active,
 	.chat-card > a:active,
-	.coverage-shell > a:active,
 	.context-grid a:active,
 	.floating-chat:active {
 		transform: scale(.97);
@@ -1122,30 +1147,138 @@ const schema = {
 		line-height: 1.75;
 	}
 
-	.coverage {
-		padding: clamp(88px, 10vw, 120px) 0;
-		background: #2e6d45;
-		color: #fff;
+	.coverage-section {
+		padding: clamp(96px, 12vw, 152px) 0;
+		display: grid;
+		grid-template-columns: .8fr 1.2fr;
+		align-items: center;
+		gap: clamp(72px, 12vw, 160px);
 	}
 
-	.coverage-shell {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 70px;
+	.coverage-kicker {
+		margin: 0;
+		color: #2f7a49;
+		font-size: .7rem;
+		font-weight: 800;
+		letter-spacing: .14em;
+		text-transform: uppercase;
 	}
 
 	.coverage-copy h2 {
-		max-width: 760px;
+		margin: 28px 0 24px;
 	}
 
-	.coverage-copy p {
-		margin: 20px 0 0;
-		color: rgba(255, 255, 255, .64);
+	.coverage-copy > p:not(.coverage-kicker) {
+		margin: 0;
+		color: #6e7772;
+		font-size: .92rem;
+		line-height: 1.7;
 	}
 
-	.coverage-shell > a {
-		flex: 0 0 auto;
+	.coverage-link {
+		min-height: 44px;
+		margin-top: 24px;
+		display: inline-flex;
+		align-items: center;
+		gap: 12px;
+		color: #2f7a49;
+		font-size: .78rem;
+		font-weight: 800;
+		text-decoration: none;
+	}
+
+	.coverage-link:hover {
+		color: #17392a;
+	}
+
+	.coverage-map {
+		position: relative;
+		min-height: 500px;
+		padding: 54px;
+		overflow: hidden;
+		border-radius: 1.4rem;
+		background: #efeee6;
+	}
+
+	.map-rings {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 450px;
+		height: 450px;
+		transform: translate(-50%, -50%);
+	}
+
+	.map-rings span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		border: 1px solid rgba(47, 122, 73, .17);
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.map-rings span:nth-child(1) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.map-rings span:nth-child(2) {
+		width: 68%;
+		height: 68%;
+	}
+
+	.map-rings span:nth-child(3) {
+		width: 35%;
+		height: 35%;
+	}
+
+	.map-rings i {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 14px;
+		height: 14px;
+		border: 3px solid #efeee6;
+		border-radius: 50%;
+		background: #2f7a49;
+		box-shadow: 0 0 0 1px #2f7a49, 0 0 0 14px rgba(47, 122, 73, .08);
+		transform: translate(-50%, -50%);
+	}
+
+	.coverage-map ul {
+		position: relative;
+		z-index: 1;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
+		list-style: none;
+	}
+
+	.coverage-map li {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: .75rem;
+		font-weight: 750;
+	}
+
+	.coverage-map li:nth-child(2),
+	.coverage-map li:nth-child(5),
+	.coverage-map li:nth-child(7) {
+		transform: translateY(240px);
+	}
+
+	.coverage-map li:nth-child(4),
+	.coverage-map li:nth-child(8) {
+		transform: translateY(330px);
+	}
+
+	.coverage-map li span {
+		color: #2f7a49;
+		font-size: .57rem;
 	}
 
 	footer {
@@ -1268,6 +1401,14 @@ const schema = {
 			grid-template-columns: 1fr;
 		}
 
+		.coverage-section {
+			grid-template-columns: 1fr;
+		}
+
+		.coverage-map {
+			min-height: 460px;
+		}
+
 		.chat-card {
 			max-width: 680px;
 		}
@@ -1304,10 +1445,6 @@ const schema = {
 			margin-top: 36px;
 		}
 
-		.coverage-shell {
-			align-items: flex-start;
-			flex-direction: column;
-		}
 	}
 
 	@media (max-width: 560px) {
@@ -1317,7 +1454,7 @@ const schema = {
 		.photo-shell,
 		.conversation,
 		.faq-section,
-		.coverage-shell,
+		.coverage-section,
 		.footer-shell,
 		.footer-bottom {
 			width: min(100% - 28px, 1180px);
@@ -1414,8 +1551,31 @@ const schema = {
 			padding: 18px;
 		}
 
-		.coverage-shell > a {
-			width: 100%;
+		.coverage-section {
+			gap: 56px;
+		}
+
+		.coverage-map {
+			min-height: auto;
+			padding: 28px;
+		}
+
+		.map-rings {
+			opacity: .55;
+		}
+
+		.coverage-map ul {
+			grid-template-columns: 1fr;
+		}
+
+		.coverage-map li,
+		.coverage-map li:nth-child(2),
+		.coverage-map li:nth-child(4),
+		.coverage-map li:nth-child(5),
+		.coverage-map li:nth-child(7),
+		.coverage-map li:nth-child(8) {
+			min-height: 36px;
+			transform: none;
 		}
 
 		.footer-shell {
