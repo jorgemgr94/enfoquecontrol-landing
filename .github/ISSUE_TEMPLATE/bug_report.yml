@@ -1,0 +1,58 @@
+name: Bug report
+description: Report a reproducible problem with the website.
+title: 'fix: '
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken and what should happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include the page, viewport, and exact steps needed to reproduce the issue.
+      placeholder: |
+        1. Open...
+        2. Select...
+        3. Observe...
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: User and business impact
+      description: Who is affected and how does this interfere with their goal?
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Device, operating system, browser, and viewport.
+      placeholder: iPhone 15, iOS 19, Safari, portrait
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Add screenshots, recordings, console output, or a preview URL.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched existing issues for duplicates.
+          required: true
+        - label: I removed sensitive or customer information from the evidence.
+          required: true

@@ -1,0 +1,32 @@
+name: PR title
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  conventional-title:
+    name: Conventional title
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Validate pull request title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z0-9][a-z0-9._/-]*\))?!?: .+'
+
+          if [[ ! "$PR_TITLE" =~ $pattern ]]; then
+            echo "::error::Pull request titles must follow Conventional Commits."
+            echo "Example: feat(landing): add service area section"
+            exit 1
+          fi
