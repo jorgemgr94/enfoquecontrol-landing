@@ -103,12 +103,6 @@ const schema = {
 				<div class="availability"><i></i> Atención en Monterrey y área metropolitana</div>
 				<h1>Tu espacio,<br /><em>bajo control.</em></h1>
 				<p>Atención para hogares, negocios e industria. Cuéntanos qué estás viendo y recibe una orientación clara para el siguiente paso.</p>
-				<div class="hero-proof">
-					<div class="proof-mark">
-						<svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 3 27 8v8c0 7-4.7 11.5-11 13C9.7 27.5 5 23 5 16V8l11-5Z"/><path d="m11 16 3 3 7-7"/></svg>
-					</div>
-					<p><strong>Atención según tu contexto</strong><span>Hogar, comercio o industria.</span></p>
-				</div>
 			</div>
 
 			<form class="hero-diagnostic" id="diagnosis-form">
@@ -480,12 +474,13 @@ const schema = {
 	.hero-shell {
 		position: relative;
 		z-index: 1;
-		min-height: 760px;
-		padding: 76px 0 96px;
+		min-height: calc(100vh - 104px);
+		min-height: calc(100svh - 104px);
+		padding: clamp(36px, 6vh, 60px) 0;
 		display: grid;
 		grid-template-columns: .78fr 1.22fr;
 		align-items: center;
-		gap: clamp(56px, 8vw, 110px);
+		gap: clamp(48px, 6vw, 88px);
 	}
 
 	.availability {
@@ -521,7 +516,7 @@ const schema = {
 	h1 {
 		max-width: 660px;
 		margin: 30px 0 24px;
-		font-size: clamp(4rem, 6.8vw, 6.7rem);
+		font-size: clamp(3.8rem, 6.1vw, 6rem);
 		font-weight: 590;
 		letter-spacing: -.075em;
 		line-height: .9;
@@ -541,49 +536,8 @@ const schema = {
 		line-height: 1.7;
 	}
 
-	.hero-proof {
-		margin-top: 38px;
-		display: flex;
-		align-items: center;
-		gap: 14px;
-	}
-
-	.proof-mark {
-		width: 46px;
-		height: 46px;
-		display: grid;
-		place-items: center;
-		border-radius: 50%;
-		background: #e4ead8;
-	}
-
-	.proof-mark svg {
-		width: 23px;
-		height: 23px;
-		fill: none;
-		stroke: #3b7446;
-		stroke-width: 1.5;
-	}
-
-	.hero-proof p,
-	.hero-proof strong,
-	.hero-proof span {
-		display: block;
-		margin: 0;
-	}
-
-	.hero-proof strong {
-		font-size: .78rem;
-	}
-
-	.hero-proof span {
-		margin-top: 3px;
-		color: #7b8980;
-		font-size: .68rem;
-	}
-
 	.hero-diagnostic {
-		padding: clamp(26px, 4vw, 48px);
+		padding: clamp(24px, 3vw, 40px);
 		border-radius: 28px;
 		background: #17392a;
 		box-shadow: 0 30px 80px rgba(30, 54, 41, .16);
@@ -613,7 +567,7 @@ const schema = {
 	}
 
 	.hero-diagnostic fieldset {
-		margin: 28px 0 0;
+		margin: 22px 0 0;
 		padding: 0;
 		border: 0;
 	}
@@ -636,7 +590,7 @@ const schema = {
 	}
 
 	.radio-face {
-		min-height: 78px;
+		min-height: 70px;
 		padding: 13px 14px 13px 42px;
 		display: flex;
 		flex-direction: column;
