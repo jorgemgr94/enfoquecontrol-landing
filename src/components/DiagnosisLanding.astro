@@ -105,6 +105,9 @@ const schema = {
 		>
 			<i aria-hidden="true"></i>
 			<strong>Cotizar</strong>
+			<svg class="header-action-icon" viewBox="0 0 24 24" aria-hidden="true">
+				<path d="M7 17 17 7M9 7h8v8"></path>
+			</svg>
 		</a>
 	</div>
 </header>
@@ -518,6 +521,17 @@ const schema = {
 	.header-action strong {
 		color: #163326;
 		font-size: .74rem;
+	}
+
+	.header-action-icon {
+		display: none;
+		width: 19px;
+		height: 19px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.8;
+		stroke-linecap: round;
+		stroke-linejoin: round;
 	}
 
 	.hero {
@@ -1777,12 +1791,11 @@ const schema = {
 		}
 
 		.header-action strong {
-			font-size: 0;
+			display: none;
 		}
 
-		.header-action strong::after {
-			content: "↗";
-			font-size: 1rem;
+		.header-action-icon {
+			display: block;
 		}
 
 		h1 {
