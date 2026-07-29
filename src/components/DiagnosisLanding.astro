@@ -1,5 +1,8 @@
 ---
 import logo from "../assets/enfoque-logo.png";
+import homeInspection from "../assets/visual-storytelling/home-inspection.webp";
+import businessInspection from "../assets/visual-storytelling/business-inspection.webp";
+import industrialInspection from "../assets/visual-storytelling/industrial-inspection.webp";
 
 const whatsappNumber = "5218118791398";
 const whatsappBase = `https://wa.me/${whatsappNumber}`;
@@ -9,16 +12,25 @@ const contexts = [
 		title: "Quiero proteger mi hogar",
 		text: "Casas y departamentos con una atención pensada para la rutina de quienes viven ahí.",
 		message: "Hola, necesito orientación para control de plagas en mi hogar.",
+		image: homeInspection,
+		imageAlt: "Técnico inspeccionando los accesos de una cocina residencial",
+		label: "Espacios habitados",
 	},
 	{
 		title: "Necesito cuidar mi negocio",
 		text: "Comercios, oficinas y restaurantes donde la confianza y la continuidad importan.",
 		message: "Hola, necesito orientación para control de plagas en mi negocio.",
+		image: businessInspection,
+		imageAlt: "Técnico realizando una inspección preventiva en un restaurante",
+		label: "Operación continua",
 	},
 	{
 		title: "Busco atención industrial",
 		text: "Bodegas, plantas y áreas operativas que requieren seguimiento y prevención.",
 		message: "Hola, necesito orientación para control de plagas en una instalación industrial.",
+		image: industrialInspection,
+		imageAlt: "Técnico revisando el perímetro interior de una bodega",
+		label: "Prevención operativa",
 	},
 ];
 
@@ -105,48 +117,62 @@ const schema = {
 				<p>Atención para hogares, negocios e industria. Cuéntanos qué estás viendo y recibe una orientación clara para el siguiente paso.</p>
 			</div>
 
-			<form class="hero-diagnostic" id="diagnosis-form">
-				<div class="form-heading">
-					<span>Orientación inicial</span>
-					<h2>¿Qué estás viendo?</h2>
-					<p>Selecciona una o varias opciones. Puedes explicar los detalles al continuar.</p>
-				</div>
+			<div class="hero-stage">
+				<figure class="hero-visual">
+					<img
+						src={homeInspection.src}
+						alt="Técnico inspeccionando cuidadosamente una cocina residencial"
+						width="1740"
+						height="904"
+						fetchpriority="high"
+						decoding="async"
+					/>
+					<figcaption><i aria-hidden="true"></i> Diagnóstico antes de intervenir</figcaption>
+				</figure>
 
-				<fieldset>
-					<legend class="sr-only">Plaga o señal observada</legend>
-					<div class="signal-grid">
-						{signals.map((signal) => (
-							<label>
-								<input type="checkbox" name="signals" value={signal.value} />
-								<span class="signal-face">
-									<i aria-hidden="true"></i>
-									<strong>{signal.label}</strong>
-									<small>{signal.note}</small>
-								</span>
-							</label>
-						))}
+				<form class="hero-diagnostic" id="diagnosis-form">
+					<div class="form-heading">
+						<span>Orientación inicial</span>
+						<h2>¿Qué estás viendo?</h2>
+						<p>Selecciona una o varias opciones. Puedes explicar los detalles al continuar.</p>
 					</div>
-				</fieldset>
 
-				<div class="form-row">
-					<div class="select-field">
-						<label for="diagnosis-space">¿Dónde ocurre?</label>
-						<select id="diagnosis-space" name="space" required>
-							<option value="">Elige el espacio</option>
-							<option>Casa o departamento</option>
-							<option>Negocio o comercio</option>
-							<option>Oficina</option>
-							<option>Restaurante</option>
-							<option>Bodega o industria</option>
-							<option>Otro espacio</option>
-						</select>
+					<fieldset>
+						<legend class="sr-only">Plaga o señal observada</legend>
+						<div class="signal-grid">
+							{signals.map((signal) => (
+								<label>
+									<input type="checkbox" name="signals" value={signal.value} />
+									<span class="signal-face">
+										<i aria-hidden="true"></i>
+										<strong>{signal.label}</strong>
+										<small>{signal.note}</small>
+									</span>
+								</label>
+							))}
+						</div>
+					</fieldset>
+
+					<div class="form-row">
+						<div class="select-field">
+							<label for="diagnosis-space">¿Dónde ocurre?</label>
+							<select id="diagnosis-space" name="space" required>
+								<option value="">Elige el espacio</option>
+								<option>Casa o departamento</option>
+								<option>Negocio o comercio</option>
+								<option>Oficina</option>
+								<option>Restaurante</option>
+								<option>Bodega o industria</option>
+								<option>Otro espacio</option>
+							</select>
+						</div>
+						<button type="submit">
+							Continuar
+							<span aria-hidden="true">↗</span>
+						</button>
 					</div>
-					<button type="submit">
-						Continuar
-						<span aria-hidden="true">↗</span>
-					</button>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</section>
 
@@ -159,13 +185,19 @@ const schema = {
 		<div class="context-grid">
 			{contexts.map((context) => (
 				<article>
-					<div>
-						<h3>{context.title}</h3>
-						<p>{context.text}</p>
+					<figure class="context-visual">
+						<img src={context.image.src} alt={context.imageAlt} width={context.image.width} height={context.image.height} loading="lazy" decoding="async" />
+						<figcaption>{context.label}</figcaption>
+					</figure>
+					<div class="context-body">
+						<div>
+							<h3>{context.title}</h3>
+							<p>{context.text}</p>
+						</div>
+						<a href={`${whatsappBase}?text=${encodeURIComponent(context.message)}`} target="_blank" rel="noreferrer">
+							Contar mi caso <span aria-hidden="true">↗</span>
+						</a>
 					</div>
-					<a href={`${whatsappBase}?text=${encodeURIComponent(context.message)}`} target="_blank" rel="noreferrer">
-						Contar mi caso <span aria-hidden="true">↗</span>
-					</a>
 				</article>
 			))}
 		</div>
@@ -330,14 +362,14 @@ const schema = {
 
 	const floatingChat = document.querySelector<HTMLElement>(".floating-chat");
 	const hero = document.querySelector<HTMLElement>(".hero");
-	const inlineContactLinks = Array.from(
-		document.querySelectorAll<HTMLElement>('a[href^="https://wa.me/"]:not(.floating-chat)'),
+	const floatingChatBlockers = Array.from(
+		document.querySelectorAll<HTMLElement>('a[href^="https://wa.me/"]:not(.floating-chat), .context-grid article, .chat-card, .coverage-section, .faq-section, footer'),
 	);
-	const visibleContactLinks = new Set<Element>();
+	const visibleFloatingChatBlockers = new Set<Element>();
 	let heroIsVisible = true;
 
 	const updateFloatingChat = () => {
-		floatingChat?.classList.toggle("is-visible", !heroIsVisible && visibleContactLinks.size === 0);
+		floatingChat?.classList.toggle("is-visible", !heroIsVisible && visibleFloatingChatBlockers.size === 0);
 	};
 
 	if ("IntersectionObserver" in window && hero) {
@@ -346,19 +378,37 @@ const schema = {
 			updateFloatingChat();
 		}, { threshold: 0.05 });
 
-		const contactObserver = new IntersectionObserver((entries) => {
+		const floatingChatObserver = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
-					visibleContactLinks.add(entry.target);
+					visibleFloatingChatBlockers.add(entry.target);
 				} else {
-					visibleContactLinks.delete(entry.target);
+					visibleFloatingChatBlockers.delete(entry.target);
 				}
 			});
 			updateFloatingChat();
-		}, { threshold: 0.25 });
+		}, { threshold: 0.1 });
 
 		heroObserver.observe(hero);
-		inlineContactLinks.forEach((link) => contactObserver.observe(link));
+		floatingChatBlockers.forEach((blocker) => floatingChatObserver.observe(blocker));
+	}
+
+	const revealItems = Array.from(
+		document.querySelectorAll<HTMLElement>(".section-heading, .context-grid article, .story-top, .process-timeline, .conversation > *, .coverage-section > *, .faq-section > *"),
+	);
+
+	if ("IntersectionObserver" in window) {
+		revealItems.forEach((item) => item.classList.add("reveal-item"));
+
+		const revealObserver = new IntersectionObserver((entries, observer) => {
+			entries.forEach((entry) => {
+				if (!entry.isIntersecting) return;
+				entry.target.classList.add("is-revealed");
+				observer.unobserve(entry.target);
+			});
+		}, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+
+		revealItems.forEach((item) => revealObserver.observe(item));
 	}
 </script>
 
@@ -505,11 +555,11 @@ const schema = {
 		z-index: 1;
 		min-height: calc(100vh - 104px);
 		min-height: calc(100svh - 104px);
-		padding: clamp(36px, 6vh, 60px) 0;
+		padding: clamp(32px, 5vh, 52px) 0;
 		display: grid;
-		grid-template-columns: .78fr 1.22fr;
+		grid-template-columns: .7fr 1.3fr;
 		align-items: center;
-		gap: clamp(48px, 6vw, 88px);
+		gap: clamp(40px, 5vw, 72px);
 	}
 
 	.availability {
@@ -565,10 +615,80 @@ const schema = {
 		line-height: 1.7;
 	}
 
+	.hero-stage {
+		position: relative;
+		min-height: 790px;
+	}
+
+	.hero-visual {
+		position: absolute;
+		inset: 0 0 92px 54px;
+		margin: 0;
+		overflow: hidden;
+		border-radius: 32px;
+		background: #e8e0d3;
+		box-shadow: 0 32px 80px rgba(48, 61, 49, .13);
+	}
+
+	.hero-visual::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, transparent 55%, rgba(14, 37, 27, .34));
+		pointer-events: none;
+	}
+
+	.hero-visual img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 45% center;
+		transform: scale(1.015);
+		transition: transform 900ms cubic-bezier(.23, 1, .32, 1);
+	}
+
+	.hero-stage:hover .hero-visual img {
+		transform: scale(1.045);
+	}
+
+	.hero-visual figcaption {
+		position: absolute;
+		z-index: 1;
+		top: 22px;
+		left: 22px;
+		min-height: 38px;
+		padding: 0 13px;
+		display: inline-flex;
+		align-items: center;
+		gap: 9px;
+		border: 1px solid rgba(255, 255, 255, .3);
+		border-radius: 999px;
+		background: rgba(20, 48, 35, .72);
+		backdrop-filter: blur(12px);
+		color: #fff;
+		font-size: .66rem;
+		font-weight: 750;
+	}
+
+	.hero-visual figcaption i {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: #c6e36e;
+		box-shadow: 0 0 0 5px rgba(198, 227, 110, .13);
+	}
+
 	.hero-diagnostic {
-		padding: clamp(24px, 3vw, 40px);
+		position: absolute;
+		z-index: 2;
+		right: 110px;
+		bottom: 0;
+		left: 0;
+		padding: clamp(24px, 2.6vw, 36px);
 		border-radius: 28px;
-		background: #17392a;
+		background: rgba(23, 57, 42, .97);
+		backdrop-filter: blur(18px);
 		box-shadow: 0 30px 80px rgba(30, 54, 41, .16);
 		color: #fff;
 	}
@@ -758,6 +878,25 @@ const schema = {
 		padding: clamp(96px, 12vw, 152px) 0;
 	}
 
+	.reveal-item {
+		opacity: 0;
+		transform: translateY(24px);
+		transition: opacity 620ms cubic-bezier(.23, 1, .32, 1), transform 620ms cubic-bezier(.23, 1, .32, 1);
+	}
+
+	.reveal-item.is-revealed {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.context-grid article:nth-child(2).reveal-item {
+		transition-delay: 70ms;
+	}
+
+	.context-grid article:nth-child(3).reveal-item {
+		transition-delay: 140ms;
+	}
+
 	.section-heading {
 		max-width: 780px;
 		margin: 0 auto;
@@ -809,19 +948,83 @@ const schema = {
 	}
 
 	.context-grid article {
-		min-height: 370px;
-		padding: 36px;
+		min-height: 470px;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
-		border-radius: 8px;
+		overflow: hidden;
+		border-radius: 18px;
 		background: #efede5;
-		transition: background 180ms cubic-bezier(.23, 1, .32, 1), transform 180ms cubic-bezier(.23, 1, .32, 1);
+		box-shadow: 0 0 0 1px rgba(23, 57, 42, .045);
+		transition: background 180ms cubic-bezier(.23, 1, .32, 1), transform 220ms cubic-bezier(.23, 1, .32, 1), box-shadow 220ms cubic-bezier(.23, 1, .32, 1);
 	}
 
 	.context-grid article:hover {
 		background: #e9e8de;
 		transform: translateY(-4px);
+		box-shadow: 0 20px 48px rgba(36, 57, 44, .11);
+	}
+
+	.context-visual {
+		position: relative;
+		height: 220px;
+		margin: 0;
+		overflow: hidden;
+		background: #dcdcd1;
+	}
+
+	.context-visual::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, transparent 52%, rgba(16, 35, 27, .38));
+		pointer-events: none;
+	}
+
+	.context-visual img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 700ms cubic-bezier(.23, 1, .32, 1), filter 300ms;
+	}
+
+	.context-grid article:nth-child(1) .context-visual img {
+		object-position: 56% center;
+	}
+
+	.context-grid article:nth-child(2) .context-visual img {
+		object-position: 58% center;
+	}
+
+	.context-grid article:nth-child(3) .context-visual img {
+		object-position: 54% center;
+	}
+
+	.context-grid article:hover .context-visual img {
+		filter: saturate(1.06);
+		transform: scale(1.045);
+	}
+
+	.context-visual figcaption {
+		position: absolute;
+		z-index: 1;
+		right: 18px;
+		bottom: 16px;
+		left: 18px;
+		color: #fff;
+		font-size: .63rem;
+		font-weight: 800;
+		letter-spacing: .08em;
+		text-transform: uppercase;
+	}
+
+	.context-body {
+		min-height: 250px;
+		padding: 28px 30px 26px;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	.context-grid h3 {
@@ -840,7 +1043,7 @@ const schema = {
 
 	.context-grid a {
 		min-height: 44px;
-		padding-top: 28px;
+		padding-top: 22px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -875,6 +1078,8 @@ const schema = {
 
 	.photo-wrap {
 		position: relative;
+		overflow: hidden;
+		border-radius: 24px;
 	}
 
 	.photo-wrap img {
@@ -883,8 +1088,13 @@ const schema = {
 		aspect-ratio: 1.2;
 		object-fit: cover;
 		object-position: center;
-		border-radius: 24px;
 		filter: saturate(.76);
+		transition: filter 500ms cubic-bezier(.23, 1, .32, 1), transform 900ms cubic-bezier(.23, 1, .32, 1);
+	}
+
+	.photo-wrap:hover img {
+		filter: saturate(.9);
+		transform: scale(1.035);
 	}
 
 	.photo-badge {
@@ -1362,15 +1572,30 @@ const schema = {
 		}
 
 		.hero-shell {
+			min-height: auto;
+			padding-top: 64px;
+			padding-bottom: 80px;
 			grid-template-columns: .7fr 1.3fr;
 			gap: 48px;
+		}
+
+		.hero-stage {
+			min-height: 720px;
+		}
+
+		.hero-visual {
+			inset: 0 0 78px 28px;
+		}
+
+		.hero-diagnostic {
+			right: 18px;
 		}
 
 		h1 {
 			font-size: clamp(3.7rem, 7vw, 5rem);
 		}
 
-		.context-grid article {
+		.context-body {
 			padding: 28px;
 		}
 
@@ -1400,6 +1625,49 @@ const schema = {
 		}
 	}
 
+	@media (min-width: 761px) and (max-height: 900px) {
+		.hero-shell {
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+
+		.hero-stage {
+			min-height: 690px;
+		}
+
+		.hero-visual {
+			top: 0;
+			bottom: 70px;
+		}
+
+		.hero-diagnostic {
+			padding: 24px 30px;
+		}
+
+		.form-heading h2 {
+			margin: 10px 0 7px;
+			font-size: clamp(2rem, 2.7vw, 2.45rem);
+		}
+
+		.hero-diagnostic fieldset {
+			margin-top: 16px;
+		}
+
+		.signal-face {
+			min-height: 60px;
+		}
+
+		.form-row {
+			margin-top: 14px;
+		}
+
+		.select-field select,
+		.hero-diagnostic button {
+			height: 48px;
+			min-height: 48px;
+		}
+	}
+
 	@media (max-width: 760px) {
 		.header-shell {
 			min-height: 88px;
@@ -1410,13 +1678,31 @@ const schema = {
 		}
 
 		.hero-shell {
-			padding-top: 72px;
+			padding-top: 52px;
 			grid-template-columns: 1fr;
-			gap: 56px;
+			gap: 46px;
 		}
 
 		.hero-copy {
 			max-width: 650px;
+		}
+
+		.hero-stage {
+			min-height: 0;
+			display: grid;
+			gap: 16px;
+		}
+
+		.hero-visual {
+			position: relative;
+			inset: auto;
+			height: 420px;
+			border-radius: 24px;
+		}
+
+		.hero-diagnostic {
+			position: relative;
+			inset: auto;
 		}
 
 		.context-grid {
@@ -1424,7 +1710,7 @@ const schema = {
 		}
 
 		.context-grid article {
-			min-height: 300px;
+			min-height: 460px;
 		}
 
 		.context-grid a {
@@ -1475,6 +1761,16 @@ const schema = {
 			border-radius: 20px;
 		}
 
+		.hero-visual {
+			height: 310px;
+			border-radius: 20px;
+		}
+
+		.hero-visual figcaption {
+			top: 16px;
+			left: 16px;
+		}
+
 		.signal-grid {
 			grid-template-columns: 1fr;
 		}
@@ -1500,6 +1796,15 @@ const schema = {
 		.faq-section {
 			padding-top: 88px;
 			padding-bottom: 88px;
+		}
+
+		.context-visual {
+			height: 210px;
+		}
+
+		.context-body {
+			min-height: 250px;
+			padding: 26px 24px 22px;
 		}
 
 		.photo-wrap img {
@@ -1586,6 +1891,18 @@ const schema = {
 			opacity: 1;
 			visibility: visible;
 			pointer-events: auto;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.reveal-item {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
+
+		.context-grid article.reveal-item {
+			transition-delay: 0ms;
 		}
 	}
 </style>
