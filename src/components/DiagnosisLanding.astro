@@ -169,23 +169,42 @@ const schema = {
 
 	<section class="photo-story">
 		<div class="photo-shell">
-			<div class="photo-wrap">
-				<img src="/bg-image.webp" alt="Técnico realizando una inspección profesional en una vivienda" width="1920" height="1282" loading="lazy" />
-				<div class="photo-badge">
-					<span class="badge-dot"></span>
-					Diagnóstico antes de recomendar
+			<div class="story-top">
+				<div class="photo-wrap">
+					<img src="/bg-image.webp" alt="Técnico realizando una inspección profesional en una vivienda" width="1920" height="1282" loading="lazy" />
+					<div class="photo-badge">
+						<span class="badge-dot"></span>
+						Diagnóstico antes de recomendar
+					</div>
+				</div>
+				<div class="story-copy">
+					<span class="pill pill-light">Nuestro enfoque</span>
+					<h2>Primero entendemos. Después actuamos.</h2>
+					<p>Las señales visibles son solo una parte del problema. El tipo de espacio, los puntos de acceso y la actividad observada ayudan a definir una atención adecuada.</p>
 				</div>
 			</div>
-			<div class="story-copy">
-				<span class="pill pill-light">Nuestro enfoque</span>
-				<h2>Primero entendemos. Después actuamos.</h2>
-				<p>Las señales visibles son solo una parte del problema. El tipo de espacio, los puntos de acceso y la actividad observada ayudan a definir una atención adecuada.</p>
-				<ul>
-					<li><i>Escuchar</i><span>Qué observaste y desde cuándo.</span></li>
-					<li><i>Revisar</i><span>El espacio y las condiciones del caso.</span></li>
-					<li><i>Resolver</i><span>Con tratamiento e indicaciones claras.</span></li>
-					<li><i>Prevenir</i><span>Reduciendo condiciones de reaparición.</span></li>
-				</ul>
+
+			<div class="process-timeline" aria-label="Nuestro proceso de atención">
+				<article>
+					<i class="timeline-node" aria-hidden="true"></i>
+					<strong>Escuchar</strong>
+					<p>Qué observaste y desde cuándo.</p>
+				</article>
+				<article>
+					<i class="timeline-node" aria-hidden="true"></i>
+					<strong>Revisar</strong>
+					<p>El espacio y las condiciones del caso.</p>
+				</article>
+				<article>
+					<i class="timeline-node" aria-hidden="true"></i>
+					<strong>Resolver</strong>
+					<p>Con tratamiento e indicaciones claras.</p>
+				</article>
+				<article>
+					<i class="timeline-node" aria-hidden="true"></i>
+					<strong>Prevenir</strong>
+					<p>Reduciendo condiciones de reaparición.</p>
+				</article>
 			</div>
 		</div>
 	</section>
@@ -827,6 +846,10 @@ const schema = {
 	}
 
 	.photo-shell {
+		display: block;
+	}
+
+	.story-top {
 		display: grid;
 		grid-template-columns: 1.12fr .88fr;
 		align-items: center;
@@ -880,29 +903,55 @@ const schema = {
 		line-height: 1.75;
 	}
 
-	.story-copy ul {
-		margin: 36px 0 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.story-copy li {
-		padding: 15px 0;
+	.process-timeline {
+		position: relative;
+		margin-top: clamp(64px, 8vw, 96px);
 		display: grid;
-		grid-template-columns: 90px 1fr;
-		gap: 18px;
-		border-bottom: 1px solid rgba(255, 255, 255, .11);
-		font-size: .74rem;
+		grid-template-columns: repeat(4, 1fr);
+		gap: clamp(24px, 4vw, 56px);
 	}
 
-	.story-copy li i {
+	.process-timeline::before {
+		content: "";
+		position: absolute;
+		top: 9px;
+		right: 0;
+		left: 0;
+		height: 1px;
+		background: rgba(255, 255, 255, .16);
+	}
+
+	.process-timeline article {
+		position: relative;
+		padding-top: 48px;
+	}
+
+	.timeline-node {
+		position: absolute;
+		z-index: 1;
+		top: 3px;
+		left: 0;
+		width: 13px;
+		height: 13px;
+		border: 3px solid #17392a;
+		border-radius: 50%;
+		background: #c6e36e;
+		box-shadow: 0 0 0 1px #c6e36e, 0 0 0 7px rgba(198, 227, 110, .08);
+	}
+
+	.process-timeline strong {
+		display: block;
 		color: #c6e36e;
-		font-style: normal;
+		font-size: .8rem;
 		font-weight: 800;
 	}
 
-	.story-copy li span {
+	.process-timeline p {
+		max-width: 210px;
+		margin: 10px 0 0;
 		color: rgba(255, 255, 255, .55);
+		font-size: .72rem;
+		line-height: 1.65;
 	}
 
 	.conversation {
@@ -1206,7 +1255,7 @@ const schema = {
 			padding: 28px;
 		}
 
-		.photo-shell {
+		.story-top {
 			grid-template-columns: 1fr;
 		}
 
@@ -1338,8 +1387,27 @@ const schema = {
 			aspect-ratio: .92;
 		}
 
-		.story-copy li {
-			grid-template-columns: 76px 1fr;
+		.process-timeline {
+			margin-left: 7px;
+			grid-template-columns: 1fr;
+			gap: 36px;
+		}
+
+		.process-timeline::before {
+			top: 0;
+			bottom: 0;
+			left: 6px;
+			width: 1px;
+			height: auto;
+		}
+
+		.process-timeline article {
+			padding: 0 0 0 42px;
+		}
+
+		.timeline-node {
+			top: 3px;
+			left: 0;
 		}
 
 		.chat-card {
