@@ -76,9 +76,14 @@ const schema = {
 			<a href="#como-ayudamos">Cómo ayudamos</a>
 			<a href="#preguntas">Preguntas</a>
 		</nav>
-		<a class="header-action" href="tel:+528118791398">
-			<span>Llámanos</span>
-			<strong>81 1879 1398</strong>
+		<a
+			class="header-action"
+			href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`}
+			target="_blank"
+			rel="noreferrer"
+		>
+			<i aria-hidden="true"></i>
+			<strong>Cotizar por WhatsApp</strong>
 		</a>
 	</div>
 </header>
@@ -88,8 +93,8 @@ const schema = {
 		<div class="hero-shell">
 			<div class="hero-copy">
 				<div class="availability"><i></i> Atención en Monterrey y área metropolitana</div>
-				<h1>Empecemos por lo que estás viendo.</h1>
-				<p>Cuéntanos la señal más evidente. No necesitas conocer el tratamiento ni el nombre técnico del problema.</p>
+				<h1>Tu espacio,<br /><em>bajo control.</em></h1>
+				<p>Atención para hogares, negocios e industria. Cuéntanos qué estás viendo y recibe una orientación clara para el siguiente paso.</p>
 				<div class="hero-proof">
 					<div class="proof-mark">
 						<svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 3 27 8v8c0 7-4.7 11.5-11 13C9.7 27.5 5 23 5 16V8l11-5Z"/><path d="m11 16 3 3 7-7"/></svg>
@@ -101,7 +106,7 @@ const schema = {
 			<form class="hero-diagnostic" id="diagnosis-form">
 				<div class="form-heading">
 					<span>Orientación inicial</span>
-					<h2>¿Qué señal reconoces?</h2>
+					<h2>¿Qué estás viendo?</h2>
 					<p>Elige la opción más cercana. Puedes explicar los detalles en WhatsApp.</p>
 				</div>
 
@@ -110,7 +115,7 @@ const schema = {
 					<div class="signal-grid">
 						{signals.map((signal) => (
 							<label>
-								<input type="radio" name="signal" value={signal.value} required />
+								<input type="checkbox" name="signals" value={signal.value} />
 								<span class="radio-face">
 									<i aria-hidden="true"></i>
 									<strong>{signal.label}</strong>
@@ -268,10 +273,27 @@ const schema = {
 
 <script>
 	const form = document.querySelector<HTMLFormElement>("#diagnosis-form");
+	const signalInputs = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="signals"]'));
+
+	signalInputs.forEach((input) => {
+		input.addEventListener("change", () => {
+			signalInputs[0]?.setCustomValidity("");
+		});
+	});
+
 	form?.addEventListener("submit", (event) => {
 		event.preventDefault();
 		const data = new FormData(form);
-		const message = `Hola, necesito orientación para control de plagas.\n\nEstoy viendo: ${data.get("signal")}\nOcurre en: ${data.get("space")}`;
+		const selectedSignals = data.getAll("signals");
+
+		if (selectedSignals.length === 0) {
+			signalInputs[0]?.setCustomValidity("Selecciona al menos una opción.");
+			signalInputs[0]?.reportValidity();
+			return;
+		}
+
+		signalInputs[0]?.setCustomValidity("");
+		const message = `Hola, necesito orientación para control de plagas.\n\nEstoy viendo: ${selectedSignals.join(", ")}\nOcurre en: ${data.get("space")}`;
 		window.open(`https://wa.me/5218118791398?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
 	});
 </script>
@@ -351,26 +373,36 @@ const schema = {
 
 	.header-action {
 		min-height: 48px;
-		padding-left: 18px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		border-left: 1px solid rgba(22, 51, 38, .14);
+		padding: 0 17px;
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		border: 1px solid rgba(22, 51, 38, .18);
+		border-radius: 9px;
 		text-decoration: none;
+		transition: border-color 160ms cubic-bezier(.23, 1, .32, 1), background 160ms cubic-bezier(.23, 1, .32, 1), transform 120ms;
 	}
 
-	.header-action span {
-		color: #7a887f;
-		font-size: .59rem;
-		font-weight: 750;
-		text-transform: uppercase;
-		letter-spacing: .08em;
+	.header-action:hover {
+		border-color: #4d8557;
+		background: rgba(65, 125, 75, .05);
+	}
+
+	.header-action:active {
+		transform: scale(.97);
+	}
+
+	.header-action i {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: #83a93d;
+		box-shadow: 0 0 0 4px rgba(131, 169, 61, .1);
 	}
 
 	.header-action strong {
-		margin-top: 2px;
 		color: #163326;
-		font-size: .78rem;
+		font-size: .74rem;
 	}
 
 	.hero {
@@ -454,6 +486,12 @@ const schema = {
 		line-height: .9;
 	}
 
+	h1 em {
+		color: #3e7a4a;
+		font-family: Georgia, "Times New Roman", serif;
+		font-weight: 400;
+	}
+
 	.hero-copy > p {
 		max-width: 510px;
 		margin: 0;
@@ -524,6 +562,7 @@ const schema = {
 		font-size: clamp(2rem, 3vw, 2.85rem);
 		font-weight: 580;
 		letter-spacing: -.05em;
+		white-space: nowrap;
 	}
 
 	.form-heading p {
@@ -1258,13 +1297,24 @@ const schema = {
 			width: min(100% - 28px, 1180px);
 		}
 
-		.header-action span {
+		.header-action {
+			min-height: 44px;
+			width: 44px;
+			padding: 0;
+			justify-content: center;
+		}
+
+		.header-action i {
 			display: none;
 		}
 
-		.header-action {
-			min-height: 44px;
-			padding-left: 14px;
+		.header-action strong {
+			font-size: 0;
+		}
+
+		.header-action strong::after {
+			content: "↗";
+			font-size: 1rem;
 		}
 
 		h1 {
