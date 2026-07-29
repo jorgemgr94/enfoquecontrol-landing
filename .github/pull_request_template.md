@@ -1,22 +1,22 @@
-## Resumen
+## Summary
 
-<!-- Explica brevemente el problema y el resultado de este PR. -->
+<!-- Briefly explain the problem and the outcome of this PR. -->
 
-## Cambios
+## Changes
 
 - 
 
-## Validación
+## Validation
 
-- [ ] El proyecto compila correctamente.
-- [ ] Se probaron los flujos afectados.
-- [ ] Se revisó el comportamiento responsive, cuando aplica.
-- [ ] No hay errores ni warnings nuevos en consola.
+- [ ] The project builds successfully.
+- [ ] The affected flows were tested.
+- [ ] Responsive behavior was reviewed when applicable.
+- [ ] There are no new console errors or warnings.
 
-## Evidencia visual
+## Visual evidence
 
-<!-- Agrega capturas, video o enlace a la vista previa cuando existan cambios visuales. -->
+<!-- Add screenshots, a video, or a preview link when the PR includes visual changes. -->
 
-## Riesgos y notas
+## Risks and notes
 
-<!-- Describe riesgos, decisiones pendientes o seguimiento necesario. Escribe "Ninguno" cuando no aplique. -->
+<!-- Describe risks, pending decisions, or required follow-up. Write "None" when not applicable. -->
