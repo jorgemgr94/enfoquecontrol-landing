@@ -44,7 +44,7 @@ const coverage = [
 
 const faqs = [
 	{
-		question: "¿Puedo enviar fotografías por WhatsApp?",
+		question: "¿Puedo enviar fotografías?",
 		answer: "Sí. Las imágenes del área, rastros o daños observados pueden dar contexto a la primera conversación y ayudar a decidir qué información hace falta.",
 	},
 	{
@@ -91,7 +91,7 @@ const schema = {
 			rel="noreferrer"
 		>
 			<i aria-hidden="true"></i>
-			<strong>Cotizar por WhatsApp</strong>
+			<strong>Cotizar</strong>
 		</a>
 	</div>
 </header>
@@ -115,7 +115,7 @@ const schema = {
 				<div class="form-heading">
 					<span>Orientación inicial</span>
 					<h2>¿Qué estás viendo?</h2>
-					<p>Elige la opción más cercana. Puedes explicar los detalles en WhatsApp.</p>
+					<p>Elige la opción más cercana. Puedes explicar los detalles al continuar.</p>
 				</div>
 
 				<fieldset>
@@ -148,7 +148,7 @@ const schema = {
 						</select>
 					</div>
 					<button type="submit">
-						Continuar en WhatsApp
+						Continuar
 						<span aria-hidden="true">↗</span>
 					</button>
 				</div>
@@ -229,7 +229,7 @@ const schema = {
 		<div class="chat-card">
 			<div class="chat-top">
 				<img src={logo.src} alt="" aria-hidden="true" width="462" height="221" loading="lazy" />
-				<div><strong>Enfoque Pest Control</strong><span>Orientación por WhatsApp</span></div>
+				<div><strong>Enfoque Pest Control</strong><span>Orientación</span></div>
 				<i></i>
 			</div>
 			<div class="messages">
@@ -301,13 +301,13 @@ const schema = {
 		<div class="footer-action">
 			<span>Contacto directo</span>
 			<a href="tel:+528118791398">81 1879 1398</a>
-			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito información.")}`} target="_blank" rel="noreferrer">WhatsApp ↗</a>
+			<a href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito información.")}`} target="_blank" rel="noreferrer">Contacto ↗</a>
 		</div>
 	</div>
 	<div class="footer-bottom"><span>© {new Date().getFullYear()} Enfoque Pest Control</span><span>Monterrey, Nuevo León</span></div>
 </footer>
 
-<a class="floating-chat" href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`} target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp">
+<a class="floating-chat" href={`${whatsappBase}?text=${encodeURIComponent("Hola, necesito orientación para controlar una plaga.")}`} target="_blank" rel="noreferrer" aria-label="Abrir canal de contacto">
 	<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.52 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.58 5.93L.1 23.9l6.28-1.64a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.31 11.88-11.85 0-3.17-1.23-6.14-3.46-8.37Zm-8.42 18.21h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.82 9.82 0 0 1-1.51-5.25c0-5.43 4.44-9.85 9.9-9.85a9.8 9.8 0 0 1 7 2.9 9.77 9.77 0 0 1 2.9 6.97c0 5.43-4.45 9.84-9.91 9.84Z"/></svg>
 	<span>Cuéntanos qué ves</span>
 </a>
