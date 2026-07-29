@@ -9,19 +9,16 @@ const contexts = [
 		title: "Quiero proteger mi hogar",
 		text: "Casas y departamentos con una atención pensada para la rutina de quienes viven ahí.",
 		message: "Hola, necesito orientación para control de plagas en mi hogar.",
-		icon: "home",
 	},
 	{
 		title: "Necesito cuidar mi negocio",
 		text: "Comercios, oficinas y restaurantes donde la confianza y la continuidad importan.",
 		message: "Hola, necesito orientación para control de plagas en mi negocio.",
-		icon: "store",
 	},
 	{
 		title: "Busco atención industrial",
 		text: "Bodegas, plantas y áreas operativas que requieren seguimiento y prevención.",
 		message: "Hola, necesito orientación para control de plagas en una instalación industrial.",
-		icon: "industry",
 	},
 ];
 
@@ -151,20 +148,17 @@ const schema = {
 
 	<section class="context-section" id="soluciones">
 		<div class="section-heading">
-			<span class="pill">Soluciones</span>
+			<span class="pill">Servicios</span>
 			<h2>El mismo problema puede necesitar enfoques distintos.</h2>
 			<p>La atención cambia según el lugar, su operación y las personas que lo utilizan.</p>
 		</div>
 		<div class="context-grid">
 			{contexts.map((context) => (
 				<article>
-					<div class="context-icon">
-						{context.icon === "home" && <svg aria-hidden="true" viewBox="0 0 36 36"><path d="m5 17 13-11 13 11v13H5V17Z"/><path d="M14 30V20h8v10"/></svg>}
-						{context.icon === "store" && <svg aria-hidden="true" viewBox="0 0 36 36"><path d="M6 15v15h24V15M4 14l3-8h22l3 8"/><path d="M4 14c0 3 5 3 5 0 0 3 5 3 5 0 0 3 5 3 5 0 0 3 5 3 5 0 0 3 5 3 5 0 0 3 5 3 5 0"/></svg>}
-						{context.icon === "industry" && <svg aria-hidden="true" viewBox="0 0 36 36"><path d="M5 30V15l9 5v-8l9 5V6h8v24H5Z"/><path d="M10 25h3m5 0h3m5 0h2"/></svg>}
+					<div>
+						<h3>{context.title}</h3>
+						<p>{context.text}</p>
 					</div>
-					<h3>{context.title}</h3>
-					<p>{context.text}</p>
 					<a href={`${whatsappBase}?text=${encodeURIComponent(context.message)}`} target="_blank" rel="noreferrer">
 						Contar mi caso <span aria-hidden="true">↗</span>
 					</a>
@@ -779,61 +773,44 @@ const schema = {
 	}
 
 	.context-grid article {
-		min-height: 390px;
-		padding: 34px;
+		min-height: 450px;
+		padding: 36px;
 		display: flex;
 		flex-direction: column;
-		border-radius: 18px;
-		background: #fbf7ee;
-		box-shadow: inset 0 0 0 1px rgba(22, 51, 38, .08);
-		transition: transform 180ms cubic-bezier(.23, 1, .32, 1), box-shadow 180ms cubic-bezier(.23, 1, .32, 1);
+		justify-content: space-between;
+		border-radius: 8px;
+		background: #efede5;
+		transition: background 180ms cubic-bezier(.23, 1, .32, 1), transform 180ms cubic-bezier(.23, 1, .32, 1);
 	}
 
 	.context-grid article:hover {
+		background: #e9e8de;
 		transform: translateY(-4px);
-		box-shadow: inset 0 0 0 1px rgba(55, 111, 67, .16), 0 18px 45px rgba(26, 57, 40, .07);
-	}
-
-	.context-icon {
-		width: 58px;
-		height: 58px;
-		display: grid;
-		place-items: center;
-		border-radius: 16px;
-		background: #e5ecd9;
-	}
-
-	.context-icon svg {
-		width: 28px;
-		height: 28px;
-		fill: none;
-		stroke: #3a7447;
-		stroke-width: 1.4;
 	}
 
 	.context-grid h3 {
-		margin: 30px 0 13px;
-		font-size: 1.4rem;
-		font-weight: 620;
+		margin: 0 0 16px;
+		font-size: 1.6rem;
+		font-weight: 570;
 		letter-spacing: -.04em;
 	}
 
 	.context-grid p {
 		margin: 0;
-		color: #718078;
-		font-size: .8rem;
-		line-height: 1.75;
+		color: #707a74;
+		font-size: .82rem;
+		line-height: 1.7;
 	}
 
 	.context-grid a {
 		min-height: 44px;
-		margin-top: auto;
+		padding-top: 28px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		border-top: 1px solid rgba(22, 51, 38, .1);
-		color: #397047;
-		font-size: .72rem;
+		border-top: 1px solid rgba(24, 32, 28, .1);
+		color: #2f7044;
+		font-size: .75rem;
 		font-weight: 800;
 		text-decoration: none;
 		transition: color 160ms, transform 120ms;
@@ -1271,7 +1248,7 @@ const schema = {
 		}
 
 		.context-grid article {
-			min-height: 330px;
+			min-height: 360px;
 		}
 
 		.context-grid a {
