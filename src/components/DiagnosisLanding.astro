@@ -109,7 +109,7 @@ const schema = {
 				<div class="form-heading">
 					<span>Orientación inicial</span>
 					<h2>¿Qué estás viendo?</h2>
-					<p>Elige la opción más cercana. Puedes explicar los detalles al continuar.</p>
+					<p>Selecciona una o varias opciones. Puedes explicar los detalles al continuar.</p>
 				</div>
 
 				<fieldset>
@@ -118,7 +118,7 @@ const schema = {
 						{signals.map((signal) => (
 							<label>
 								<input type="checkbox" name="signals" value={signal.value} />
-								<span class="radio-face">
+								<span class="signal-face">
 									<i aria-hidden="true"></i>
 									<strong>{signal.label}</strong>
 									<small>{signal.note}</small>
@@ -258,11 +258,8 @@ const schema = {
 				<i></i>
 			</div>
 			<ul>
-				{coverage.map((city, index) => (
-					<li>
-						<span>{String(index + 1).padStart(2, "0")}</span>
-						{city}
-					</li>
+				{coverage.map((city) => (
+					<li>{city}</li>
 				))}
 			</ul>
 		</div>
@@ -330,6 +327,39 @@ const schema = {
 		const message = `Hola, necesito orientación para control de plagas.\n\nEstoy viendo: ${selectedSignals.join(", ")}\nOcurre en: ${data.get("space")}`;
 		window.open(`https://wa.me/5218118791398?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
 	});
+
+	const floatingChat = document.querySelector<HTMLElement>(".floating-chat");
+	const hero = document.querySelector<HTMLElement>(".hero");
+	const inlineContactLinks = Array.from(
+		document.querySelectorAll<HTMLElement>('a[href^="https://wa.me/"]:not(.floating-chat)'),
+	);
+	const visibleContactLinks = new Set<Element>();
+	let heroIsVisible = true;
+
+	const updateFloatingChat = () => {
+		floatingChat?.classList.toggle("is-visible", !heroIsVisible && visibleContactLinks.size === 0);
+	};
+
+	if ("IntersectionObserver" in window && hero) {
+		const heroObserver = new IntersectionObserver(([entry]) => {
+			heroIsVisible = entry.isIntersecting;
+			updateFloatingChat();
+		}, { threshold: 0.05 });
+
+		const contactObserver = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					visibleContactLinks.add(entry.target);
+				} else {
+					visibleContactLinks.delete(entry.target);
+				}
+			});
+			updateFloatingChat();
+		}, { threshold: 0.25 });
+
+		heroObserver.observe(hero);
+		inlineContactLinks.forEach((link) => contactObserver.observe(link));
+	}
 </script>
 
 <style>
@@ -561,8 +591,8 @@ const schema = {
 
 	.form-heading p {
 		margin: 0;
-		color: rgba(255, 255, 255, .55);
-		font-size: .76rem;
+		color: rgba(255, 255, 255, .65);
+		font-size: .8rem;
 	}
 
 	.hero-diagnostic fieldset {
@@ -588,7 +618,7 @@ const schema = {
 		pointer-events: none;
 	}
 
-	.radio-face {
+	.signal-face {
 		min-height: 70px;
 		padding: 13px 14px 13px 42px;
 		display: flex;
@@ -600,46 +630,62 @@ const schema = {
 		transition: border-color 160ms cubic-bezier(.23, 1, .32, 1), background 160ms cubic-bezier(.23, 1, .32, 1), transform 120ms;
 	}
 
-	.radio-face > i {
+	.signal-face > i {
 		position: absolute;
 		top: 50%;
 		left: 15px;
-		width: 15px;
-		height: 15px;
+		width: 16px;
+		height: 16px;
 		border: 1px solid rgba(255, 255, 255, .4);
-		border-radius: 50%;
+		border-radius: 4px;
 		transform: translateY(-50%);
 	}
 
-	.radio-face strong {
+	.signal-face > i::after {
+		content: "";
+		position: absolute;
+		top: 2px;
+		left: 5px;
+		width: 4px;
+		height: 8px;
+		border: solid #17392a;
+		border-width: 0 2px 2px 0;
+		opacity: 0;
+		transform: rotate(45deg);
+	}
+
+	.signal-face strong {
 		font-size: .76rem;
 	}
 
-	.radio-face small {
+	.signal-face small {
 		margin-top: 3px;
-		color: rgba(255, 255, 255, .43);
-		font-size: .62rem;
+		color: rgba(255, 255, 255, .65);
+		font-size: .7rem;
 	}
 
-	.signal-grid label:hover .radio-face {
+	.signal-grid label:hover .signal-face {
 		border-color: rgba(184, 213, 108, .5);
 		background: rgba(255, 255, 255, .07);
 	}
 
-	.signal-grid input:focus-visible + .radio-face {
+	.signal-grid input:focus-visible + .signal-face {
 		outline: 3px solid #9fbd57;
 		outline-offset: 2px;
 	}
 
-	.signal-grid input:checked + .radio-face {
+	.signal-grid input:checked + .signal-face {
 		border-color: #b8d56c;
 		background: #254d39;
 	}
 
-	.signal-grid input:checked + .radio-face > i {
+	.signal-grid input:checked + .signal-face > i {
 		border-color: #b8d56c;
-		box-shadow: inset 0 0 0 3px #254d39;
 		background: #b8d56c;
+	}
+
+	.signal-grid input:checked + .signal-face > i::after {
+		opacity: 1;
 	}
 
 	.form-row {
@@ -763,7 +809,7 @@ const schema = {
 	}
 
 	.context-grid article {
-		min-height: 450px;
+		min-height: 370px;
 		padding: 36px;
 		display: flex;
 		flex-direction: column;
@@ -920,8 +966,8 @@ const schema = {
 	.process-timeline p {
 		max-width: 210px;
 		margin: 10px 0 0;
-		color: rgba(255, 255, 255, .55);
-		font-size: .72rem;
+		color: rgba(255, 255, 255, .64);
+		font-size: .78rem;
 		line-height: 1.65;
 	}
 
@@ -1206,7 +1252,6 @@ const schema = {
 	.coverage-map li {
 		display: flex;
 		align-items: center;
-		gap: 10px;
 		font-size: .75rem;
 		font-weight: 750;
 	}
@@ -1220,11 +1265,6 @@ const schema = {
 	.coverage-map li:nth-child(4),
 	.coverage-map li:nth-child(8) {
 		transform: translateY(330px);
-	}
-
-	.coverage-map li span {
-		color: #2f7a49;
-		font-size: .57rem;
 	}
 
 	footer {
@@ -1278,8 +1318,8 @@ const schema = {
 		align-items: center;
 		justify-content: space-between;
 		border-top: 1px solid rgba(22, 51, 38, .1);
-		color: #89938d;
-		font-size: .61rem;
+		color: #67766e;
+		font-size: .68rem;
 	}
 
 	.floating-chat {
@@ -1299,7 +1339,7 @@ const schema = {
 		font-size: .7rem;
 		font-weight: 850;
 		text-decoration: none;
-		transition: transform 120ms, background 160ms;
+		transition: transform 120ms, background 160ms, opacity 160ms cubic-bezier(.23, 1, .32, 1);
 	}
 
 	.floating-chat svg {
@@ -1384,7 +1424,7 @@ const schema = {
 		}
 
 		.context-grid article {
-			min-height: 360px;
+			min-height: 300px;
 		}
 
 		.context-grid a {
@@ -1537,6 +1577,15 @@ const schema = {
 
 		.floating-chat {
 			display: flex;
+			opacity: 0;
+			visibility: hidden;
+			pointer-events: none;
+		}
+
+		.floating-chat.is-visible {
+			opacity: 1;
+			visibility: visible;
+			pointer-events: auto;
 		}
 	}
 </style>
