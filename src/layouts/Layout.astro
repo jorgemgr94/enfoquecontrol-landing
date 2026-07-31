@@ -10,6 +10,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://www.enfoquecontrol.com');
+const googleAnalyticsId = 'G-0Z4Q2S9WCC';
 ---
 
 <!doctype html>
@@ -32,6 +33,20 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.enfoquecontrol.com
 		<meta property="og:site_name" content="Enfoque Pest Control" />
 		<meta property="og:image" content="https://www.enfoquecontrol.com/bg-image.webp" />
 		<meta name="twitter:card" content="summary_large_image" />
+
+		<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+		></script>
+		<script is:inline define:vars={{ googleAnalyticsId }}>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', googleAnalyticsId, {
+				allow_google_signals: false,
+				allow_ad_personalization_signals: false
+			});
+		</script>
 
 		<title>{title}</title>
 	</head>
