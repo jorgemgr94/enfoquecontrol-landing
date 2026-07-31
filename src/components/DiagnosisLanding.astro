@@ -1,5 +1,6 @@
 ---
 import logo from '../assets/enfoque-logo.png';
+import heroInspection from '../assets/hero-field-inspection.webp';
 import homeInspection from '../assets/visual-storytelling/home-inspection.webp';
 import businessInspection from '../assets/visual-storytelling/business-inspection.webp';
 import industrialInspection from '../assets/visual-storytelling/industrial-inspection.webp';
@@ -109,7 +110,7 @@ const schema = {
 			rel="noreferrer"
 		>
 			<i aria-hidden="true"></i>
-			<strong>Cotizar</strong>
+			<strong>Cotizar por WhatsApp</strong>
 			<ExternalArrowIcon class="header-action-icon" />
 		</a>
 	</div>
@@ -130,10 +131,10 @@ const schema = {
 			<div class="hero-stage">
 				<figure class="hero-visual">
 					<img
-						src={homeInspection.src}
-						alt="Técnico inspeccionando cuidadosamente una cocina residencial"
-						width="1740"
-						height="904"
+						src={heroInspection.src}
+						alt="Técnico inspeccionando un perímetro con lámpara y espejo de revisión"
+						width={heroInspection.width}
+						height={heroInspection.height}
 						fetchpriority="high"
 						decoding="async"
 					/>
@@ -179,12 +180,39 @@ const schema = {
 							</select>
 						</div>
 						<button type="submit">
-							Continuar
+							Solicitar diagnóstico
 							<ExternalArrowIcon />
 						</button>
 					</div>
 				</form>
 			</div>
+		</div>
+	</section>
+
+	<section class="trust-section" aria-labelledby="trust-title">
+		<div class="trust-shell">
+			<div class="trust-intro">
+				<span>Experiencia de campo</span>
+				<h2 id="trust-title">Atención con criterio, no soluciones improvisadas.</h2>
+			</div>
+			<ul class="trust-points">
+				<li>
+					<strong>Experiencia previa</strong>
+					<span>En control de plagas para hogares, negocios e industria.</span>
+				</li>
+				<li>
+					<strong>Atención directa</strong>
+					<span>El caso se revisa antes de recomendar un tratamiento.</span>
+				</li>
+				<li>
+					<strong>Indicaciones claras</strong>
+					<span>Qué preparar, qué esperar y cuándo volver a utilizar el espacio.</span>
+				</li>
+				<li>
+					<strong>Seguimiento</strong>
+					<span>Definido de acuerdo con la plaga y el tratamiento aplicado.</span>
+				</li>
+			</ul>
 		</div>
 	</section>
 
@@ -219,7 +247,7 @@ const schema = {
 								target="_blank"
 								rel="noreferrer"
 							>
-								Contar mi caso <ExternalArrowIcon />
+								Solicitar diagnóstico <ExternalArrowIcon />
 							</a>
 						</div>
 					</article>
@@ -336,7 +364,7 @@ const schema = {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Empezar mi conversación
+				Cotizar por WhatsApp
 				<ExternalArrowIcon />
 			</a>
 		</div>
@@ -356,7 +384,7 @@ const schema = {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Confirmar mi zona <ExternalArrowIcon />
+				Consultar disponibilidad <ExternalArrowIcon />
 			</a>
 		</div>
 		<div class="coverage-map" aria-label="Municipios atendidos">
@@ -408,7 +436,7 @@ const schema = {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Contacto <ExternalArrowIcon />
+				Cotizar por WhatsApp <ExternalArrowIcon />
 			</a>
 		</div>
 	</div>
@@ -419,17 +447,17 @@ const schema = {
 
 <a
 	class="floating-chat"
-	href={`${whatsappBase}?text=${encodeURIComponent('Hola, necesito orientación para controlar una plaga.')}`}
+	href={`${whatsappBase}?text=${encodeURIComponent('Hola, quiero enviar fotos de la plaga para recibir orientación.')}`}
 	target="_blank"
 	rel="noreferrer"
-	aria-label="Abrir canal de contacto"
+	aria-label="Enviar fotos de la plaga por WhatsApp"
 >
 	<svg aria-hidden="true" viewBox="0 0 24 24"
 		><path
 			d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.52 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.58 5.93L.1 23.9l6.28-1.64a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.31 11.88-11.85 0-3.17-1.23-6.14-3.46-8.37Zm-8.42 18.21h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.82 9.82 0 0 1-1.51-5.25c0-5.43 4.44-9.85 9.9-9.85a9.8 9.8 0 0 1 7 2.9 9.77 9.77 0 0 1 2.9 6.97c0 5.43-4.45 9.84-9.91 9.84Z"
 		></path></svg
 	>
-	<span>Cuéntanos qué ves</span>
+	<span>Enviar fotos de la plaga</span>
 </a>
 
 <script>
@@ -510,7 +538,7 @@ const schema = {
 
 	const revealItems = Array.from(
 		document.querySelectorAll<HTMLElement>(
-			'.section-heading, .context-grid article, .story-top, .process-timeline, .human-shell > *, .conversation > *, .coverage-section > *, .faq-section > *'
+			'.trust-shell, .section-heading, .context-grid article, .story-top, .process-timeline, .human-shell > *, .conversation > *, .coverage-section > *, .faq-section > *'
 		)
 	);
 
@@ -640,6 +668,7 @@ const schema = {
 	.header-action strong {
 		color: #163326;
 		font-size: 0.74rem;
+		white-space: nowrap;
 	}
 
 	.header-action :global(.header-action-icon) {
@@ -776,7 +805,7 @@ const schema = {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		object-position: 35% center;
+		object-position: 20% center;
 		transform: scale(1.015);
 		transition: transform 900ms cubic-bezier(0.23, 1, 0.32, 1);
 	}
@@ -993,6 +1022,7 @@ const schema = {
 		font-weight: 850;
 		text-decoration: none;
 		cursor: pointer;
+		white-space: nowrap;
 		transition:
 			background 160ms cubic-bezier(0.23, 1, 0.32, 1),
 			transform 120ms;
@@ -1014,6 +1044,67 @@ const schema = {
 	.conversation,
 	.faq-section {
 		padding: clamp(96px, 12vw, 152px) 0;
+	}
+
+	.trust-section {
+		padding: 22px 0;
+		background: #173326;
+		color: #fbf7ee;
+	}
+
+	.trust-shell {
+		width: min(1180px, calc(100% - 48px));
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.7fr);
+		align-items: center;
+		gap: clamp(30px, 5vw, 72px);
+	}
+
+	.trust-intro span {
+		color: #bcd66f;
+		font-size: 0.61rem;
+		font-weight: 850;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+	}
+
+	.trust-intro h2 {
+		max-width: 330px;
+		margin: 8px 0 0;
+		font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+		font-weight: 590;
+		letter-spacing: -0.035em;
+		line-height: 1.1;
+	}
+
+	.trust-points {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		list-style: none;
+	}
+
+	.trust-points li {
+		min-height: 86px;
+		padding: 14px 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		border-left: 1px solid rgba(255, 255, 255, 0.13);
+	}
+
+	.trust-points strong {
+		font-size: 0.72rem;
+		font-weight: 800;
+	}
+
+	.trust-points span {
+		margin-top: 6px;
+		color: rgba(251, 247, 238, 0.64);
+		font-size: 0.66rem;
+		line-height: 1.45;
 	}
 
 	.reveal-item {
@@ -1911,6 +2002,15 @@ const schema = {
 		.human-shell {
 			gap: 48px;
 		}
+
+		.trust-shell {
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.trust-intro h2 {
+			max-width: none;
+		}
 	}
 
 	@media (min-width: 761px) and (max-height: 900px) {
@@ -2012,6 +2112,18 @@ const schema = {
 		.human-portrait {
 			max-width: 560px;
 		}
+
+		.trust-points {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.trust-points li:nth-child(odd) {
+			border-left: 0;
+		}
+
+		.trust-points li:nth-child(n + 3) {
+			border-top: 1px solid rgba(255, 255, 255, 0.13);
+		}
 	}
 
 	@media (max-width: 560px) {
@@ -2029,6 +2141,10 @@ const schema = {
 
 		.human-shell {
 			width: min(100% - 28px, 1040px);
+		}
+
+		.trust-shell {
+			width: min(100% - 28px, 1180px);
 		}
 
 		.header-action {
@@ -2110,6 +2226,21 @@ const schema = {
 
 		.human-copy blockquote {
 			padding-left: 18px;
+		}
+
+		.trust-section {
+			padding: 34px 0;
+		}
+
+		.trust-points {
+			grid-template-columns: 1fr;
+		}
+
+		.trust-points li {
+			min-height: 0;
+			padding: 18px 0;
+			border-top: 1px solid rgba(255, 255, 255, 0.13);
+			border-left: 0;
 		}
 
 		.context-body {
