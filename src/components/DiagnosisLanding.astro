@@ -110,7 +110,7 @@ const schema = {
 			rel="noreferrer"
 		>
 			<i aria-hidden="true"></i>
-			<strong>Cotizar</strong>
+			<strong>Cotizar por WhatsApp</strong>
 			<ExternalArrowIcon class="header-action-icon" />
 		</a>
 	</div>
@@ -180,7 +180,7 @@ const schema = {
 							</select>
 						</div>
 						<button type="submit">
-							Continuar
+							Solicitar diagnóstico
 							<ExternalArrowIcon />
 						</button>
 					</div>
@@ -220,7 +220,7 @@ const schema = {
 								target="_blank"
 								rel="noreferrer"
 							>
-								Contar mi caso <ExternalArrowIcon />
+								Solicitar diagnóstico <ExternalArrowIcon />
 							</a>
 						</div>
 					</article>
@@ -305,7 +305,7 @@ const schema = {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Empezar mi conversación
+				Cotizar por WhatsApp
 				<ExternalArrowIcon />
 			</a>
 		</div>
@@ -325,7 +325,7 @@ const schema = {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Confirmar mi zona <ExternalArrowIcon />
+				Consultar disponibilidad <ExternalArrowIcon />
 			</a>
 		</div>
 		<div class="coverage-map" aria-label="Municipios atendidos">
@@ -377,7 +377,7 @@ const schema = {
 				target="_blank"
 				rel="noreferrer"
 			>
-				Contacto <ExternalArrowIcon />
+				Cotizar por WhatsApp <ExternalArrowIcon />
 			</a>
 		</div>
 	</div>
@@ -388,17 +388,17 @@ const schema = {
 
 <a
 	class="floating-chat"
-	href={`${whatsappBase}?text=${encodeURIComponent('Hola, necesito orientación para controlar una plaga.')}`}
+	href={`${whatsappBase}?text=${encodeURIComponent('Hola, quiero enviar fotos de la plaga para recibir orientación.')}`}
 	target="_blank"
 	rel="noreferrer"
-	aria-label="Abrir canal de contacto"
+	aria-label="Enviar fotos de la plaga por WhatsApp"
 >
 	<svg aria-hidden="true" viewBox="0 0 24 24"
 		><path
 			d="M20.5 3.5A11.8 11.8 0 0 0 12.08 0C5.52 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.58 5.93L.1 23.9l6.28-1.64a11.9 11.9 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.31 11.88-11.85 0-3.17-1.23-6.14-3.46-8.37Zm-8.42 18.21h-.01a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.82 9.82 0 0 1-1.51-5.25c0-5.43 4.44-9.85 9.9-9.85a9.8 9.8 0 0 1 7 2.9 9.77 9.77 0 0 1 2.9 6.97c0 5.43-4.45 9.84-9.91 9.84Z"
 		></path></svg
 	>
-	<span>Cuéntanos qué ves</span>
+	<span>Enviar fotos de la plaga</span>
 </a>
 
 <script>
@@ -609,6 +609,7 @@ const schema = {
 	.header-action strong {
 		color: #163326;
 		font-size: 0.74rem;
+		white-space: nowrap;
 	}
 
 	.header-action :global(.header-action-icon) {
@@ -962,6 +963,7 @@ const schema = {
 		font-weight: 850;
 		text-decoration: none;
 		cursor: pointer;
+		white-space: nowrap;
 		transition:
 			background 160ms cubic-bezier(0.23, 1, 0.32, 1),
 			transform 120ms;
