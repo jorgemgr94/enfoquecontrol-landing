@@ -189,6 +189,33 @@ const schema = {
 		</div>
 	</section>
 
+	<section class="trust-section" aria-labelledby="trust-title">
+		<div class="trust-shell">
+			<div class="trust-intro">
+				<span>Experiencia de campo</span>
+				<h2 id="trust-title">Atención con criterio, no soluciones improvisadas.</h2>
+			</div>
+			<ul class="trust-points">
+				<li>
+					<strong>Experiencia previa</strong>
+					<span>En control de plagas para hogares, negocios e industria.</span>
+				</li>
+				<li>
+					<strong>Atención directa</strong>
+					<span>El caso se revisa antes de recomendar un tratamiento.</span>
+				</li>
+				<li>
+					<strong>Indicaciones claras</strong>
+					<span>Qué preparar, qué esperar y cuándo volver a utilizar el espacio.</span>
+				</li>
+				<li>
+					<strong>Seguimiento</strong>
+					<span>Definido de acuerdo con la plaga y el tratamiento aplicado.</span>
+				</li>
+			</ul>
+		</div>
+	</section>
+
 	<section class="context-section" id="soluciones">
 		<div class="section-heading">
 			<span class="pill">Servicios</span>
@@ -479,7 +506,7 @@ const schema = {
 
 	const revealItems = Array.from(
 		document.querySelectorAll<HTMLElement>(
-			'.section-heading, .context-grid article, .story-top, .process-timeline, .conversation > *, .coverage-section > *, .faq-section > *'
+			'.trust-shell, .section-heading, .context-grid article, .story-top, .process-timeline, .conversation > *, .coverage-section > *, .faq-section > *'
 		)
 	);
 
@@ -985,6 +1012,67 @@ const schema = {
 	.conversation,
 	.faq-section {
 		padding: clamp(96px, 12vw, 152px) 0;
+	}
+
+	.trust-section {
+		padding: 22px 0;
+		background: #173326;
+		color: #fbf7ee;
+	}
+
+	.trust-shell {
+		width: min(1180px, calc(100% - 48px));
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.7fr);
+		align-items: center;
+		gap: clamp(30px, 5vw, 72px);
+	}
+
+	.trust-intro span {
+		color: #bcd66f;
+		font-size: 0.61rem;
+		font-weight: 850;
+		letter-spacing: 0.09em;
+		text-transform: uppercase;
+	}
+
+	.trust-intro h2 {
+		max-width: 330px;
+		margin: 8px 0 0;
+		font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+		font-weight: 590;
+		letter-spacing: -0.035em;
+		line-height: 1.1;
+	}
+
+	.trust-points {
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		list-style: none;
+	}
+
+	.trust-points li {
+		min-height: 86px;
+		padding: 14px 20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		border-left: 1px solid rgba(255, 255, 255, 0.13);
+	}
+
+	.trust-points strong {
+		font-size: 0.72rem;
+		font-weight: 800;
+	}
+
+	.trust-points span {
+		margin-top: 6px;
+		color: rgba(251, 247, 238, 0.64);
+		font-size: 0.66rem;
+		line-height: 1.45;
 	}
 
 	.reveal-item {
@@ -1800,6 +1888,15 @@ const schema = {
 		.chat-card {
 			max-width: 680px;
 		}
+
+		.trust-shell {
+			grid-template-columns: 1fr;
+			gap: 18px;
+		}
+
+		.trust-intro h2 {
+			max-width: none;
+		}
 	}
 
 	@media (min-width: 761px) and (max-height: 900px) {
@@ -1893,6 +1990,18 @@ const schema = {
 		.context-grid a {
 			margin-top: 36px;
 		}
+
+		.trust-points {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.trust-points li:nth-child(odd) {
+			border-left: 0;
+		}
+
+		.trust-points li:nth-child(n + 3) {
+			border-top: 1px solid rgba(255, 255, 255, 0.13);
+		}
 	}
 
 	@media (max-width: 560px) {
@@ -1905,6 +2014,10 @@ const schema = {
 		.coverage-section,
 		.footer-shell,
 		.footer-bottom {
+			width: min(100% - 28px, 1180px);
+		}
+
+		.trust-shell {
 			width: min(100% - 28px, 1180px);
 		}
 
@@ -1975,6 +2088,21 @@ const schema = {
 
 		.context-visual {
 			height: 210px;
+		}
+
+		.trust-section {
+			padding: 34px 0;
+		}
+
+		.trust-points {
+			grid-template-columns: 1fr;
+		}
+
+		.trust-points li {
+			min-height: 0;
+			padding: 18px 0;
+			border-top: 1px solid rgba(255, 255, 255, 0.13);
+			border-left: 0;
 		}
 
 		.context-body {
