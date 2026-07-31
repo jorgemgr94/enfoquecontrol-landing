@@ -290,23 +290,22 @@ const schema = {
 					loading="lazy"
 					decoding="async"
 				/>
-				<figcaption>Imagen provisional · Sustituir por retrato real</figcaption>
 			</figure>
 			<div class="human-copy">
 				<span class="pill">Quién está detrás</span>
 				<h2 id="human-title">Experiencia de campo, atención de frente.</h2>
 				<p>
-					Después de trabajar en control de plagas para hogares, negocios e industria, el
-					responsable de Enfoque Pest Control comenzó su propia empresa para ofrecer una atención
-					más directa y cuidadosa.
+					Soy Carlos Martínez y estoy al frente de Enfoque Pest Control. La experiencia atendiendo
+					hogares, negocios e instalaciones industriales me enseñó que un tratamiento efectivo
+					empieza por entender bien el problema y las condiciones del espacio.
 				</p>
 				<blockquote>
 					“Antes de recomendar un tratamiento, buscamos identificar el origen, el nivel de actividad
 					y las condiciones del espacio.”
 				</blockquote>
 				<div class="human-signature">
-					<strong>Responsable de Enfoque Pest Control</strong>
-					<span>Nombre por confirmar con el cliente</span>
+					<strong>Carlos Martínez</strong>
+					<span>Fundador de Enfoque Pest Control</span>
 				</div>
 			</div>
 		</div>
@@ -1357,14 +1356,6 @@ const schema = {
 		box-shadow: 0 24px 64px rgba(34, 56, 43, 0.12);
 	}
 
-	.human-portrait::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(180deg, transparent 60%, rgba(16, 35, 27, 0.5));
-		pointer-events: none;
-	}
-
 	.human-portrait img {
 		display: block;
 		width: 100%;
@@ -1373,19 +1364,6 @@ const schema = {
 		object-fit: cover;
 		object-position: 62% center;
 		filter: saturate(0.82);
-	}
-
-	.human-portrait figcaption {
-		position: absolute;
-		z-index: 1;
-		right: 18px;
-		bottom: 18px;
-		left: 18px;
-		color: rgba(255, 255, 255, 0.8);
-		font-size: 0.61rem;
-		font-weight: 750;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
 	}
 
 	.human-copy h2 {
