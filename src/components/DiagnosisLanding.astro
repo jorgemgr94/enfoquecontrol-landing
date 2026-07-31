@@ -307,6 +307,38 @@ const schema = {
 		</div>
 	</section>
 
+	<section class="human-section" aria-labelledby="human-title">
+		<div class="human-shell">
+			<figure class="human-portrait">
+				<img
+					src={homeInspection.src}
+					alt="Técnico de control de plagas realizando una inspección"
+					width={homeInspection.width}
+					height={homeInspection.height}
+					loading="lazy"
+					decoding="async"
+				/>
+			</figure>
+			<div class="human-copy">
+				<span class="pill">Quién está detrás</span>
+				<h2 id="human-title">Experiencia de campo, atención de frente.</h2>
+				<p>
+					Soy Carlos Martínez y estoy al frente de Enfoque Pest Control. La experiencia atendiendo
+					hogares, negocios e instalaciones industriales me enseñó que un tratamiento efectivo
+					empieza por entender bien el problema y las condiciones del espacio.
+				</p>
+				<blockquote>
+					“Antes de recomendar un tratamiento, buscamos identificar el origen, el nivel de actividad
+					y las condiciones del espacio.”
+				</blockquote>
+				<div class="human-signature">
+					<strong>Carlos Martínez</strong>
+					<span>Fundador de Enfoque Pest Control</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<section class="conversation">
 		<div class="conversation-copy">
 			<span class="pill">Una conversación basta para empezar</span>
@@ -464,7 +496,7 @@ const schema = {
 	const hero = document.querySelector<HTMLElement>('.hero');
 	const floatingChatBlockers = Array.from(
 		document.querySelectorAll<HTMLElement>(
-			'a[href^="https://wa.me/"]:not(.floating-chat), .context-grid article, .chat-card, .coverage-section, .faq-section, footer'
+			'a[href^="https://wa.me/"]:not(.floating-chat), .context-grid article, .human-section, .chat-card, .coverage-section, .faq-section, footer'
 		)
 	);
 	const visibleFloatingChatBlockers = new Set<Element>();
@@ -506,7 +538,7 @@ const schema = {
 
 	const revealItems = Array.from(
 		document.querySelectorAll<HTMLElement>(
-			'.trust-shell, .section-heading, .context-grid article, .story-top, .process-timeline, .conversation > *, .coverage-section > *, .faq-section > *'
+			'.trust-shell, .section-heading, .context-grid article, .story-top, .process-timeline, .human-shell > *, .conversation > *, .coverage-section > *, .faq-section > *'
 		)
 	);
 
@@ -1392,6 +1424,84 @@ const schema = {
 		line-height: 1.65;
 	}
 
+	.human-section {
+		padding: clamp(88px, 11vw, 144px) 0;
+		background: #e8eadf;
+	}
+
+	.human-shell {
+		width: min(1040px, calc(100% - 48px));
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		align-items: center;
+		gap: clamp(52px, 9vw, 112px);
+	}
+
+	.human-portrait {
+		position: relative;
+		margin: 0;
+		overflow: hidden;
+		border-radius: 24px;
+		background: #d6d9cd;
+		box-shadow: 0 24px 64px rgba(34, 56, 43, 0.12);
+	}
+
+	.human-portrait img {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 0.88;
+		object-fit: cover;
+		object-position: 62% center;
+		filter: saturate(0.82);
+	}
+
+	.human-copy h2 {
+		max-width: 570px;
+		margin: 24px 0 22px;
+		font-size: clamp(2.7rem, 4.8vw, 4.8rem);
+		font-weight: 580;
+		letter-spacing: -0.065em;
+		line-height: 0.96;
+	}
+
+	.human-copy > p {
+		max-width: 560px;
+		margin: 0;
+		color: #627168;
+		font-size: 0.86rem;
+		line-height: 1.78;
+	}
+
+	.human-copy blockquote {
+		margin: 30px 0 0;
+		padding: 24px 0 0 24px;
+		border-top: 1px solid rgba(22, 51, 38, 0.13);
+		border-left: 3px solid #83a93d;
+		color: #244735;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+		line-height: 1.5;
+	}
+
+	.human-signature {
+		margin-top: 26px;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.human-signature strong {
+		color: #1d432f;
+		font-size: 0.75rem;
+	}
+
+	.human-signature span {
+		color: #758179;
+		font-size: 0.66rem;
+	}
+
 	.conversation {
 		display: grid;
 		grid-template-columns: 0.85fr 1.15fr;
@@ -1889,6 +1999,10 @@ const schema = {
 			max-width: 680px;
 		}
 
+		.human-shell {
+			gap: 48px;
+		}
+
 		.trust-shell {
 			grid-template-columns: 1fr;
 			gap: 18px;
@@ -1991,6 +2105,14 @@ const schema = {
 			margin-top: 36px;
 		}
 
+		.human-shell {
+			grid-template-columns: 1fr;
+		}
+
+		.human-portrait {
+			max-width: 560px;
+		}
+
 		.trust-points {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
@@ -2015,6 +2137,10 @@ const schema = {
 		.footer-shell,
 		.footer-bottom {
 			width: min(100% - 28px, 1180px);
+		}
+
+		.human-shell {
+			width: min(100% - 28px, 1040px);
 		}
 
 		.trust-shell {
@@ -2088,6 +2214,18 @@ const schema = {
 
 		.context-visual {
 			height: 210px;
+		}
+
+		.human-section {
+			padding: 88px 0;
+		}
+
+		.human-portrait img {
+			aspect-ratio: 1;
+		}
+
+		.human-copy blockquote {
+			padding-left: 18px;
 		}
 
 		.trust-section {
